@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Part C: Higher-Degree Polynomials</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax for rendering math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #0ea5e9;
+            /* Sky Blue for Polynomials */
+            --accent-2: #495057;
+            --accent-3: #fab005;
+            --mcap-color: #d946ef;
+            --class-color: #10b981;
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .nav-link.active {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings & Badges */
+        h2 {
+            font-size: 1.4rem;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge.mcap {
+            background: #fae8ff;
+            color: #a21caf;
+            border: 1px solid #f5d0fe;
+        }
+
+        .badge.class {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Tier cards (collapsible) */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+        }
+
+        .btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn.primary {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .btn.primary:hover {
+            background: #0284c7;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin: 18px 0;
+            border-left: 6px solid transparent;
+            border-top: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+        }
+
+        .tier-card[aria-expanded="false"] .tier-content {
+            display: none;
+        }
+
+        .tier1 {
+            border-left-color: var(--accent-1);
+        }
+
+        .tier2 {
+            border-left-color: var(--accent-2);
+        }
+
+        .tier3 {
+            border-left-color: var(--accent-3);
+            background: #fffdf5;
+        }
+
+        .tier-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .tier-toggle {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tier-toggle:hover {
+            color: var(--text);
+        }
+
+        /* Worked Examples */
+        details.worked-example {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        details.worked-example summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        details.worked-example summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--accent-1);
+            transition: transform 0.2s;
+        }
+
+        details.worked-example[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .example-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        /* Visual Boxes */
+        .concept-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.05rem;
+            color: #0369a1;
+        }
+
+        .interactive-tool {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95em;
+            color: #b91c1c;
+        }
+
+        /* Definition table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #fbfdff;
+            color: #374151;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .tier-toggle,
+            .btn,
+            .nav-bar {
+                display: none;
+            }
+
+            .tier-card[aria-expanded="false"] .tier-content {
+                display: block;
+            }
+
+            details.worked-example[open] summary::before {
+                content: "";
+            }
+
+            details.worked-example .example-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <!-- Navigation -->
+        <nav class="nav-bar" aria-label="Unit Navigation">
+            <a href="Unit2_PartA_Quadratics.html" class="nav-link">Part A: Quadratics</a>
+            <a href="Unit2_PartB_ComplexNumbers.html" class="nav-link">Part B: Complex Numbers</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="nav-link active">Part C: Higher Polynomials</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="nav-link">Part D: Rational Functions</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="nav-link">Part E: MCAP Review</a>
+        </nav>
+
+        <header>
+            <h1>Unit 2 — Part C: Higher-Degree Polynomials</h1>
+            <p class="lead">Moving past parabolas: Cubics, Quartics, and advanced algebraic structure.</p>
+        </header>
+
+        <hr class="sep" />
+
+        <!-- 1. Terminology -->
+        <section>
+            <h2>1. Polynomial Terminology <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>A polynomial is an expression consisting of variables and coefficients, involving only addition,
+                subtraction, multiplication, and non-negative integer exponents. NO division by variables or fractional
+                powers.</p>
+
+            <ul>
+                <li><strong>Standard Form:</strong> Terms are written in descending order of their degree. <br>Ex: \(
+                    P(x) = 4x^5 - 2x^3 + x - 7 \)</li>
+                <li><strong>Degree:</strong> The highest exponent in the polynomial. (Above: Degree 5)</li>
+                <li><strong>Leading Coefficient:</strong> The number multiplying the term with the highest degree.
+                    (Above: 4)</li>
+                <li><strong>Constant Term:</strong> The term with no variable. (Above: -7. This is always the
+                    y-intercept!)</li>
+            </ul>
+        </section>
+
+        <!-- 2. End Behavior & Even/Odd -->
+        <section>
+            <h2>2. End Behavior &amp; Even/Odd Classification <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>End Behavior (The Leading Term Dominates)</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>As \( x \) gets extremely large (positive or negative), the term with the highest degree entirely
+                        takes over the function's value. The rest of the polynomial doesn't matter.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Leading Coefficient (\( a_n \))</th>
+                                <th>Degree (\( n \)) Even</th>
+                                <th>Degree (\( n \)) Odd</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Positive (+)</strong></td>
+                                <td>Both ends go UP (Like \( y = x^2 \)) <br>\( x \to \infty, y \to \infty \)<br>\( x
+                                    \to -\infty, y \to \infty \)</td>
+                                <td>Starts DOWN, ends UP (Like \( y = x^3 \)) <br>\( x \to \infty, y \to \infty \)<br>\(
+                                    x \to -\infty, y \to -\infty \)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Negative (-)</strong></td>
+                                <td>Both ends go DOWN (Like \( y = -x^2 \)) <br>\( x \to \infty, y \to -\infty \)<br>\(
+                                    x \to -\infty, y \to -\infty \)</td>
+                                <td>Starts UP, ends DOWN (Like \( y = -x^3 \)) <br>\( x \to \infty, y \to -\infty
+                                    \)<br>\( x \to -\infty, y \to \infty \)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Even vs. Odd Functions (Symmetry Test)</h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>Functions can be symmetric mathematically, not just visually.</p>
+                    <ul>
+                        <li><strong>Even Functions:</strong> Symmetric across the y-axis. <br>Test: <strong>\( f(-x) =
+                                f(x) \)</strong>. <br><span class="muted">Example: \( y = x^4 + 2x^2 + 5 \)</span></li>
+                        <li><strong>Odd Functions:</strong> Symmetric about the origin (rotational symmetry). <br>Test:
+                            <strong>\( f(-x) = -f(x) \)</strong>. <br><span class="muted">Example: \( y = x^3 - 4x
+                                \)</span>
+                        </li>
+                    </ul>
+                    <p><em>Not all polynomials are even or odd! Most are neither.</em></p>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3. Zeros & Multiplicity -->
+        <section>
+            <h2>3. Zeros &amp; Multiplicity <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p><strong>The Fundamental Theorem of Algebra:</strong> Every polynomial of degree \( n \) has exactly \( n
+                \) roots (complex numbers count, and repeated roots count multiple times).</p>
+
+            <div class="concept-box">
+                <strong>Multiplicity:</strong> The number of times a specific linear factor appears in the factored
+                form: \( P(x) = (x - r)^m \). The multiplicity (\( m \)) determines how the graph acts at that
+                x-intercept.
+            </div>
+
+            <ul>
+                <li><strong>Multiplicity 1 (Odd):</strong> The graph <strong>CROSSES</strong> straight through the
+                    x-axis.</li>
+                <li><strong>Multiplicity 2 (Even):</strong> The graph <strong>BOUNCES</strong> (touches and turns
+                    around) at the x-axis.</li>
+                <li><strong>Multiplicity 3 (Odd, >1):</strong> The graph <strong>JOGS</strong> (flattens out momentarily
+                    as it crosses) at the x-axis.</li>
+            </ul>
+
+            <details class="worked-example">
+                <summary>Example: Analyze \( P(x) = -(x+2)(x-1)^2(x-4)^3 \)</summary>
+                <div class="example-content">
+                    <p><strong>Total Degree:</strong> \( 1 + 2 + 3 = 6 \) (Even degree). Leading coefficient is
+                        negative, so both ends go DOWN.</p>
+                    <ul>
+                        <li>Root at \( x = -2 \): Multiplicity 1 (Crosses straight)</li>
+                        <li>Root at \( x = 1 \): Multiplicity 2 (Bounces)</li>
+                        <li>Root at \( x = 4 \): Multiplicity 3 (Jogs/Flattens as it crosses)</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <!-- 4. Polynomial Division -->
+        <section>
+            <h2>4. Polynomial Division <span class="badge mcap">MCAP Focus</span> <span
+                    class="badge class">Classroom</span></h2>
+
+            <p>How do we divide a massive polynomial by a smaller factor like \( (x - 2) \)? There are three main
+                methods.</p>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Area Model / Box Method <span class="badge mcap" style="background:transparent;border:0;">★
+                            Highly Tested</span></h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>MCPS heavily pushes the Area Model for polynomial division because it reinforces structure rather
+                        than memorized steps. It's reversing the multiplication box method.</p>
+                    <p><strong>To divide \( 2x^3 - 5x^2 - 8x + 15 \) by \( (x - 3) \):</strong></p>
+                    <p>Set up a grid with the divisor along the left side and work left-to-right, filling in the
+                        quotient terms on top:</p>
+
+                    <table style="text-align: center; margin: 16px 0;">
+                        <thead>
+                            <tr>
+                                <th style="background:#f8fafc;"></th>
+                                <th style="background:#dbeafe; color:#1e40af;">\( 2x^2 \)</th>
+                                <th style="background:#dbeafe; color:#1e40af;">\( + x \)</th>
+                                <th style="background:#dbeafe; color:#1e40af;">\( - 5 \)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="background:#dbeafe; font-weight:700; color:#1e40af;">\( x \)</td>
+                                <td>\( 2x^3 \)</td>
+                                <td>\( x^2 \)</td>
+                                <td>\( -5x \)</td>
+                            </tr>
+                            <tr>
+                                <td style="background:#dbeafe; font-weight:700; color:#1e40af;">\( -3 \)</td>
+                                <td>\( -6x^2 \)</td>
+                                <td>\( -3x \)</td>
+                                <td>\( 15 \)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p><strong>How to read the grid:</strong></p>
+                    <ol>
+                        <li><strong>Column 1:</strong> The top-left cell holds \( 2x^3 \) (leading term of the
+                            dividend). To get \( 2x^3 \) by multiplying by the row header \( x \), we need \( 2x^2 \) on
+                            top. Then fill down: \( 2x^2 \times (-3) = -6x^2 \).</li>
+                        <li><strong>Column 2:</strong> We need the \( x^2 \) terms to total \( -5x^2 \). We already have
+                            \( -6x^2 \), so the next cell must contribute \( +1x^2 \). To get \( +1x^2 \) from the row
+                            \( x \), the top must be \( +x \). Fill down: \( x \times (-3) = -3x \).</li>
+                        <li><strong>Column 3:</strong> We need \( x \) terms to total \( -8x \). We have \( -3x \), so
+                            the next cell is \( -5x \). To get \( -5x \) from row \( x \), top is \( -5 \). Fill down:
+                            \( -5 \times (-3) = +15 \).</li>
+                    </ol>
+                    <p><strong>Quotient:</strong> \( 2x^2 + x - 5 \), <strong>Remainder:</strong> 0 (it divided
+                        evenly!).</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Long Division</h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>Exactly like numeric long division. Divide, Multiply, Subtract, Bring Down. Critical: Always use
+                        placeholder zeros for missing terms (e.g., if there is no \( x^2 \) term, write \( + 0x^2 \))!
+                    </p>
+                    <details class="worked-example">
+                        <summary>Example: Divide \( 2x^3 + 3x^2 - 5x + 6 \) by \( (x + 3) \)</summary>
+                        <div class="example-content">
+                            <p><strong>Step 1 (Divide):</strong> \( 2x^3 \div x = 2x^2 \). Write \( 2x^2 \) on top.</p>
+                            <p><strong>Step 2 (Multiply):</strong> \( 2x^2 \times (x+3) = 2x^3 + 6x^2 \).</p>
+                            <p><strong>Step 3 (Subtract):</strong> \( (2x^3 + 3x^2) - (2x^3 + 6x^2) = -3x^2 \).</p>
+                            <p><strong>Step 4 (Bring Down):</strong> Bring down the \( -5x \) to get \( -3x^2 - 5x \).
+                            </p>
+                            <p>Repeat: \( -3x^2 \div x = -3x \). Multiply, subtract, bring down again until done.</p>
+                            <p><strong>Result:</strong> Quotient \( 2x^2 - 3x + 4 \), Remainder \( -6 \).</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Synthetic Division <span class="badge class"
+                            style="background:transparent;border:0;color:#047857;">★ Classroom Optional</span></h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>A fast shortcut, but <strong>only works when dividing by a linear term \( (x - c) \)</strong>.
+                    </p>
+                    <ol>
+                        <li>Write the root \( c \) in a small box on the left.</li>
+                        <li>Write the coefficients of the polynomial in a row.</li>
+                        <li>Bring down the first coefficient.</li>
+                        <li>Multiply by \( c \), write it under the next coefficient, and <strong>ADD</strong> down.
+                        </li>
+                        <li>Repeat to the end. The last number is the remainder. The others are coefficients of the
+                            quotient (one degree lower).</li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <!-- 5 & 6. Remainder & Factor Theorems -->
+        <section>
+            <h2>5. The Remainder &amp; Factor Theorems <span class="badge mcap">MCAP Essential</span></h2>
+
+            <div class="concept-box" style="margin-bottom: 24px;">
+                <strong>The Remainder Theorem:</strong> If a polynomial \( P(x) \) is divided by \( (x - c) \), the
+                remainder is exactly equal to \( P(c) \).
+            </div>
+
+            <p>This means you can find a remainder <em>without doing any division</em>. Just plug the number in!</p>
+
+            <p><strong>The Factor Theorem</strong> builds on this: If \( P(c) = 0 \), then the remainder is zero. If the
+                remainder is zero, it divided perfectly. Therefore, <strong>\( (x - c) \) is a factor of the polynomial
+                    if and only if \( P(c) = 0 \).</strong></p>
+
+            <details class="worked-example">
+                <summary>Example: Use the theorem to test factors</summary>
+                <div class="example-content">
+                    <p>Is \( (x + 2) \) a factor of \( P(x) = x^3 + 5x^2 + 2x - 8 \)?</p>
+                    <p>Because the factor is \( (x + 2) \), we test \( c = -2 \).</p>
+                    <p>\( P(-2) = (-2)^3 + 5(-2)^2 + 2(-2) - 8 \)</p>
+                    <p>\( P(-2) = -8 + 5(4) - 4 - 8 \)</p>
+                    <p>\( P(-2) = -8 + 20 - 12 = 0 \)</p>
+                    <p><strong>Conclusion:</strong> Because \( P(-2) = 0 \), \( (x+2) \) IS a factor.</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 7. Rational Root Theorem -->
+        <section>
+            <h2>7. Rational Root Theorem <span class="badge class">Classroom/MCAP</span></h2>
+
+            <p>If you have a massive cubic or quartic polynomial and need to factor it from scratch, where do you even
+                start guessing roots? The Rational Root Theorem gives you a list of candidates.</p>
+
+            <p><strong>Possible Rational Roots = \( \frac{\text{Factors of the Constant term (last
+                    number)}}{\text{Factors of the Leading Coefficient (first number)}} \)</strong></p>
+
+            <p>Often written as \( \frac{p}{q} \).</p>
+
+            <details class="worked-example">
+                <summary>Example: List possible rational roots of \( 2x^3 - 3x^2 - 8x + 12 = 0 \)</summary>
+                <div class="example-content">
+                    <p>Constant term = 12. Factors of 12: \( \pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12 \)</p>
+                    <p>Leading coefficient = 2. Factors of 2: \( \pm 1, \pm 2 \)</p>
+                    <p>Possible rational roots (\( p/q \)): \( \pm 1, \pm 2, \pm 3, \pm 4, \pm 6, \pm 12, \pm
+                        \frac{1}{2}, \pm \frac{3}{2} \)</p>
+                    <p>You test these one by one using the Factor Theorem (evaluate \( P(c) \)) until you find a root
+                        that gives zero. Then divide it out and repeat.</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 8. Quadratic in Form -->
+        <section>
+            <h2>8. Quadratic in Form (Substitution) <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Sometimes higher-degree polynomials are just quadratics wearing a disguise. You must learn to "SEE
+                STRUCTURE" (a major MCAP requirement).</p>
+
+            <p>Example: \( x^4 - 5x^2 + 4 = 0 \)</p>
+            <p>Notice that \( x^4 \) is exactly the square of \( x^2 \). Let \( u = x^2 \). If we substitute this in:
+            </p>
+            <p>\( u^2 - 5u + 4 = 0 \)</p>
+            <p>Now factor normally! \( (u - 4)(u - 1) = 0 \). So \( u = 4 \) or \( u = 1 \).</p>
+            <p>Wait, we aren't done. Substitute back \( x^2 = u \):</p>
+            <ul>
+                <li>\( x^2 = 4 \implies x = \pm 2 \)</li>
+                <li>\( x^2 = 1 \implies x = \pm 1 \)</li>
+            </ul>
+        </section>
+
+        <!-- 9. Sum/Difference of Cubes -->
+        <section>
+            <h2>9. Factoring: Sum &amp; Difference of Cubes <span class="badge class">Classroom/MCAP</span></h2>
+
+            <p>There are two specific factoring formulas you must memorize for cubic binomials.</p>
+
+            <div class="concept-box" style="background:#fefce8; border-color:#fef08a; color:#854d0e;">
+                <strong>Sum of Cubes:</strong> \( a^3 + b^3 = (a + b)(a^2 - ab + b^2) \)<br><br>
+                <strong>Difference of Cubes:</strong> \( a^3 - b^3 = (a - b)(a^2 + ab + b^2) \)
+            </div>
+
+            <p><strong>The "SOAP" acronym helps remember signs:</strong><br>
+                <strong>S</strong>ame sign, <strong>O</strong>pposite sign, <strong>A</strong>lways
+                <strong>P</strong>ositive.
+            </p>
+        </section>
+
+        <!-- 10. Graphing -->
+        <section>
+            <h2>10. Bringing It All Together: Graphing Polynomials</h2>
+
+            <p>To sketch a complex polynomial by hand without a calculator:</p>
+            <ol>
+                <li><strong>Determine End Behavior:</strong> Look at the leading term.</li>
+                <li><strong>Find the y-intercept:</strong> Evaluate \( P(0) \) (it's the constant term).</li>
+                <li><strong>Find the Zeros (x-intercepts):</strong> Set \( P(x) = 0 \) and factor completely.</li>
+                <li><strong>Check Multiplicities:</strong> For each zero, decide if the graph crosses, bounces, or jogs.
+                </li>
+                <li><strong>Sketch a smooth curve:</strong> Connect the end arrows through the intercepts, honoring the
+                    bounce/cross rules.</li>
+            </ol>
+        </section>
+
+        <!-- 11. Modeling -->
+        <section>
+            <h2>11. Modeling with Polynomials <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Polynomials model real-world optimization problems, particularly those involving Volume (3D = Cubics) and
+                Area (2D = Quadratics).</p>
+
+            <details class="worked-example">
+                <summary>Example: The Open-Top Box Problem</summary>
+                <div class="example-content">
+                    <p>A manufacturer wants to cut identical squares of side length \( x \) from the four corners of a
+                        20-by-24-inch piece of cardboard and fold up the sides to make an open box.</p>
+                    <p><strong>1. Model the dimensions:</strong><br>
+                        Height = \( x \)<br>
+                        Width = \( 20 - 2x \)<br>
+                        Length = \( 24 - 2x \)</p>
+                    <p><strong>2. Write the Volume polynomial:</strong><br>
+                        \( V(x) = \text{Length} \times \text{Width} \times \text{Height} \)<br>
+                        \( V(x) = x(20 - 2x)(24 - 2x) \)</p>
+                    <p><strong>3. Analyze the domain:</strong><br>
+                        \( x \) must be greater than 0, but less than 10 (because if \( x=10 \), the width \( 20-2(10)
+                        \) becomes zero!). Practical domain: \( 0 < x < 10 \).</p>
+                            <p><strong>4. Solution:</strong> You graph this cubic polynomial on Desmos and find the
+                                local maximum within that domain to find the value of \( x \) that maximizes volume.</p>
+                </div>
+            </details>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- 12. Formative Check -->
+        <section>
+            <h2>12. Formative Check &amp; Practice <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p><strong>Practice:</strong></p>
+            <ol>
+                <li>Divide \( (x^3 - 4x^2 + 2x + 5) \) by \( (x - 2) \) using any method. State the quotient and
+                    remainder.</li>
+                <li>Use the Remainder Theorem to evaluate \( P(-3) \) for \( P(x) = 2x^3 + 5x^2 - x + 7 \).</li>
+                <li>Factor completely (Difference of Cubes): \( 8x^3 - 27 \)</li>
+                <li>Write a polynomial in standard form that has roots at \( x = 0 \) (multiplicity 2) and \( x = 3 \)
+                    (multiplicity 1).</li>
+                <li>Determine the end behavior of \( f(x) = -3x^5 + 2x^2 + x \).</li>
+            </ol>
+
+            <details class="worked-example">
+                <summary>Solutions (Expand to check)</summary>
+                <div class="example-content">
+                    <p><strong>1. Division:</strong> Roots: 2. Proceeding via synthetic or area model yields: Quotient
+                        is \( x^2 - 2x - 2 \). Remainder is \( 1 \).</p>
+                    <p><strong>2. Remainder Theorem:</strong> \( P(-3) = 2(-27) + 5(9) - (-3) + 7 = -54 + 45 + 3 + 7 = 1
+                        \). So \( P(-3) = 1 \).</p>
+                    <p><strong>3. Cubes:</strong> \( a=2x, b=3 \). SOAP formula: \( (2x - 3)((2x)^2 + (2x)(3) + 3^2) =
+                        (2x - 3)(4x^2 + 6x + 9) \).</p>
+                    <p><strong>4. Creating Polynomial:</strong> Roots mean factors are \( (x)^2 \) and \( (x - 3)^1 \).
+                        Multiply them: \( P(x) = x^2(x - 3) = x^3 - 3x^2 \).</p>
+                    <p><strong>5. End behavior:</strong> Degree is 5 (Odd). Leading Coefficient is -3 (Negative). Starts
+                        UP on left (\( \infty \)), ends DOWN on right (\( -\infty \)).</p>
+                </div>
+            </details>
+
+            <!-- Mini Exit Ticket -->
+            <div class="interactive-tool" style="background: #fdf4ff; border-color: #f5d0fe;">
+                <h4 style="color: #a21caf;">Mini Exit Ticket</h4>
+                <p>A polynomial \( Q(x) \) is divided by \( (x - 5) \), resulting in a remainder of zero. A student
+                    concludes that \( Q(0) = 5 \). Is the student correct or incorrect? Trace their logical error and
+                    explain what the Remainder Theorem actually proves here.</p>
+                <p class="muted" style="margin-top: 12px; font-size: 0.9em;"><em>Hint: Are they confusing the input
+                        value with the resulting remainder?</em></p>
+            </div>
+        </section>
+
+        <!-- Footer Nav -->
+        <div
+            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
+            <a href="Unit2_PartB_ComplexNumbers.html" class="btn">← Back to Part B</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="btn primary">Proceed to Part D: Rational Functions →</a>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.querySelectorAll('.tier-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const article = btn.closest('.tier-card');
+                const expanded = article.getAttribute('aria-expanded') === 'true';
+                article.setAttribute('aria-expanded', String(!expanded));
+                btn.setAttribute('aria-expanded', String(!expanded));
+                btn.textContent = expanded ? 'Show' : 'Hide';
+            });
+        });
+    </script>
+</body>
+
+</html>

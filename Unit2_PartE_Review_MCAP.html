@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Part E: Review &amp; MCAP Prep</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax for rendering math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Mermaid.js for Concept Map -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default', flowchart: { curve: 'linear' } });
+    </script>
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #e11d48;
+            /* Rose Red for Exam Prep */
+            --accent-2: #495057;
+            --accent-3: #fab005;
+            --mcap-color: #d946ef;
+            --class-color: #10b981;
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .nav-link.active {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings & Badges */
+        h2 {
+            font-size: 1.4rem;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge.mcap {
+            background: #fae8ff;
+            color: #a21caf;
+            border: 1px solid #f5d0fe;
+        }
+
+        .badge.class {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Forms / Visual Boxes */
+        .concept-box {
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.05rem;
+            color: #be123c;
+        }
+
+        .interactive-tool {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Details / Expandable */
+        details.worked-example {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        details.worked-example summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        details.worked-example summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--accent-1);
+            transition: transform 0.2s;
+        }
+
+        details.worked-example[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .example-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        /* Formula Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        th,
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            text-align: left;
+        }
+
+        th {
+            background: #fbfdff;
+            color: #374151;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 1rem;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95em;
+            color: #b91c1c;
+        }
+
+        /* Mermaid Map Container */
+        .mermaid-container {
+            width: 100%;
+            overflow-x: auto;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .tier-toggle,
+            .btn,
+            .nav-bar {
+                display: none;
+            }
+
+            details.worked-example[open] summary::before {
+                content: "";
+            }
+
+            details.worked-example .example-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <!-- Navigation -->
+        <nav class="nav-bar" aria-label="Unit Navigation">
+            <a href="Unit2_PartA_Quadratics.html" class="nav-link">Part A: Quadratics</a>
+            <a href="Unit2_PartB_ComplexNumbers.html" class="nav-link">Part B: Complex Numbers</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="nav-link">Part C: Higher Polynomials</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="nav-link">Part D: Rational Functions</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="nav-link active">Part E: MCAP Review</a>
+        </nav>
+
+        <header>
+            <h1>Unit 2 — Part E: Review &amp; MCAP Strategies</h1>
+            <p class="lead">Synthesizing 9 weeks of algebraic theory into exam-ready confidence.</p>
+        </header>
+
+        <hr class="sep" />
+
+        <!-- 1. Concept Map -->
+        <section>
+            <h2>1. Unit 2 Concept Map <span class="badge mcap">Course Context</span></h2>
+
+            <p>How everything fits together structurally:</p>
+
+            <div class="mermaid-container">
+                <div class="mermaid">
+                    graph TD
+                    A[Quadratics] -->|Expand System| B[Complex Numbers]
+                    A -->|Generalize Degree| C[Higher Degree Polynomials]
+                    C -->|Divide by Polynomial| D[Rational Functions]
+
+                    A -.->|Intersection Strategy| E[Systems of Equations]
+                    B -.->|Non-Real Zeros| C
+
+                    subgraph "Skill Dependencies"
+                    C1[Factorization Methods] --> C
+                    C1 --> D
+                    A1[Completing the Square] --> B
+                    end
+
+                    style A fill:#bfdbfe,stroke:#3b82f6
+                    style B fill:#e9d5ff,stroke:#a855f7
+                    style C fill:#a7f3d0,stroke:#10b981
+                    style D fill:#fef08a,stroke:#eab308
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Formula Quick Reference -->
+        <section>
+            <h2>2. Formula Quick Reference <span class="badge mcap">MCAP Essential</span></h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Concept</th>
+                        <th>Formula / Rule</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Quadratic Formula</strong></td>
+                        <td>\( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</td>
+                        <td>Finds roots of \( ax^2+bx+c=0 \)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discriminant</strong></td>
+                        <td>\( \Delta = b^2 - 4ac \)</td>
+                        <td>Identifies number/type of real/complex roots</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vertex Point</strong></td>
+                        <td>\( h = \frac{-b}{2a} \), then plug in for \( k \)</td>
+                        <td>Finds the peak/valley of a parabola</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Difference of Squares</strong></td>
+                        <td>\( a^2 - b^2 = (a-b)(a+b) \)</td>
+                        <td>Used heavily in rational simplification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sum/Diff of Cubes</strong></td>
+                        <td>\( a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2) \)</td>
+                        <td>Remember the "SOAP" acronym for signs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complex Numbers</strong></td>
+                        <td>\( i = \sqrt{-1} \) and \( i^2 = -1 \)</td>
+                        <td>Converting radicals with negative bases</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rational Asymptotes</strong></td>
+                        <td>VA: Denom=0 <br> HA: Degrees (Top vs Bottom)</td>
+                        <td>Limits the domain and range boundaries</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 3. Common Pitfalls -->
+        <section>
+            <h2>3. Common Pitfalls &amp; MCAP Traps <span class="badge class">Exam Prep</span></h2>
+
+            <div class="concept-box">
+                <h4>Trap #1: The "Freshman Dream"</h4>
+                <p><strong>Incorrect:</strong> \( (x + 3)^2 = x^2 + 9 \)</p>
+                <p><strong>Correct:</strong> Box foil it! \( (x + 3)(x + 3) = x^2 + 6x + 9 \)</p>
+            </div>
+
+            <div class="concept-box" style="background: #fffbeb; border-color: #fde68a; color: #b45309;">
+                <h4>Trap #2: Canceling Terms in Fractions (Rationals)</h4>
+                <p><strong>Incorrect:</strong> \( \frac{x^2 - 4}{x^2 + 4} \) becomes \( \frac{-4}{4} = -1 \)</p>
+                <p><strong>Correct:</strong> You cannot cancel terms! Only factors. \( x^2 - 4 \) is
+                    addition/subtraction. You must factor it to \( (x-2)(x+2) \) FIRST to see if any complete factors
+                    match.</p>
+            </div>
+
+            <div class="concept-box" style="background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a;">
+                <h4>Trap #3: Extraneous Solutions</h4>
+                <p>When solving rational equations by multiplying by an LCD, check your final answers against the
+                    original denominators. If an answer makes an original denominator equal zero, it is mathematically
+                    illegal (Extraneous) and must be thrown out!</p>
+            </div>
+
+            <div class="concept-box" style="background: #fdf4ff; border-color: #f5d0fe; color: #86198f;">
+                <h4>Trap #4: Forgetting the \(\pm\)</h4>
+                <p>When solving \( x^2 = 16 \) by taking the square root of both sides, NEVER write just \( x = 4 \). It
+                    MUST be \( x = \pm 4 \).</p>
+            </div>
+        </section>
+
+        <!-- 4. Mixed Practice -->
+        <section>
+            <h2>4. Cumulative Mixed Practice</h2>
+
+            <p><strong>Instructions:</strong> Treat this like a mini-mock exam. Do not look at the solutions until you
+                have attempted every problem.</p>
+
+            <ol>
+                <li><strong>(Quadratics)</strong> Solve for \( x \) by completing the square: \( -2x^2 + 12x - 14 = 0 \)
+                </li>
+                <li><strong>(Complex)</strong> Evaluate \( (3 - 5i)^2 \) and write in standard complex form.</li>
+                <li><strong>(Polynomials)</strong> Completely factor the cubic polynomial given that \( x = 2 \) is a
+                    known root: \( P(x) = x^3 - 7x^2 + 16x - 12 \)</li>
+                <li><strong>(Rationals)</strong> Add and simplify: \( \frac{x}{x-2} + \frac{4}{x+2} \)</li>
+                <li><strong>(Modeling)</strong> A rocket is launched. Its height \( h \) in feet after \( t \) seconds
+                    is given by \( h(t) = -16t^2 + 64t + 80 \). How many seconds until it hits the ground?</li>
+            </ol>
+
+            <details class="worked-example">
+                <summary>Step-by-step Solutions</summary>
+                <div class="example-content">
+                    <p><strong>1. Completing the Square:</strong><br>
+                        Divide all by -2: \( x^2 - 6x + 7 = 0 \)<br>
+                        Move constant: \( x^2 - 6x = -7 \)<br>
+                        Half of -6 is -3, squared is 9: \( x^2 - 6x + 9 = -7 + 9 \)<br>
+                        Factor: \( (x - 3)^2 = 2 \)<br>
+                        Root: \( x - 3 = \pm\sqrt{2} \implies x = 3 \pm \sqrt{2} \)</p>
+
+                    <p><strong>2. Complex Exponent:</strong><br>
+                        \( (3 - 5i)(3 - 5i) = 9 - 15i - 15i + 25i^2 \)<br>
+                        \( 9 - 30i + 25(-1) \)<br>
+                        \( 9 - 30i - 25 = -16 - 30i \)</p>
+
+                    <p><strong>3. Advanced Factoring:</strong><br>
+                        Since \( x=2 \) is a root, divide \( P(x) \) by \( (x-2) \) using division.<br>
+                        Quotient is \( x^2 - 5x + 6 \).<br>
+                        Factor the quotient: \( (x-2)(x-3) \).<br>
+                        Original polynomial factored entirely: \( (x-2)(x-2)(x-3) \) or \( (x-2)^2(x-3) \).</p>
+
+                    <p><strong>4. Rational Addition:</strong><br>
+                        LCD is \( (x-2)(x+2) \).<br>
+                        Top left: \( x(x+2) = x^2 + 2x \)<br>
+                        Top right: \( 4(x-2) = 4x - 8 \)<br>
+                        Combine over LCD: \( \frac{x^2 + 6x - 8}{x^2 - 4} \).</p>
+
+                    <p><strong>5. Rocket Modeling:</strong><br>
+                        Hits ground when \( h(t) = 0 \).<br>
+                        \( -16t^2 + 64t + 80 = 0 \)<br>
+                        Divide out GCF (-16): \( t^2 - 4t - 5 = 0 \)<br>
+                        Factor: \( (t - 5)(t + 1) = 0 \)<br>
+                        Solutions: \( t = 5, t = -1 \). Reject the negative time.<br>
+                        Answer: <strong>5 seconds</strong>.</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 5. Strategy Tips -->
+        <section>
+            <h2>5. MCAP Strategy Tips <span class="badge mcap">Testing Strategy</span></h2>
+
+            <ul>
+                <li><strong>Read the Constraints:</strong> MCAP questions often trick you by placing domain restrictions
+                    secretly in the text like "where \( x > 0 \)".</li>
+                <li><strong>Work Backwards on Factoring:</strong> If they ask for the factors of a polynomial and give a
+                    multiple-choice list, you don't actually have to factor it from scratch! Just distribute/FOIL the
+                    answer choices to see which matches the original problem.</li>
+                <li><strong>Use Desmos to "Cheat" Legally:</strong> If an equation asks for roots, type the whole
+                    function into the built-in Desmos graphing calculator and visually tap the x-intercepts. You can
+                    verify your strict algebraic work instantly.</li>
+                <li><strong>Check System Solutions Twice:</strong> When solving a linear-quadratic system, remember that
+                    picking the `x`-coordinate is only half the battle. You must plug it back in to find the
+                    `y`-coordinate. The MCAP will absolutely include the lone `x`-coordinate as a trap answer.</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <div
+            style="margin-top: 50px; text-align: center; color: var(--muted); padding-top: 20px; border-top: 1px dashed #cbd5e1;">
+            <p><strong>End of Unit 2 Excellence Bible.</strong> Great job completing Polynomial &amp; Rational
+                Functions!</p>
+            <p><a href="Unit2_PartA_Quadratics.html" class="btn" style="text-decoration:none;">Restart at Part A</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

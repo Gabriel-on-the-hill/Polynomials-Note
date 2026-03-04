@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Part A: Quadratic Expressions &amp; Equations</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax for rendering math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #3b5bdb;
+            /* Tier 1 */
+            --accent-2: #495057;
+            /* Tier 2 */
+            --accent-3: #fab005;
+            /* Tier 3 */
+            --mcap-color: #d946ef;
+            /* MCAP Badge */
+            --class-color: #10b981;
+            /* Classroom Badge */
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .nav-link.active {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings & Badges */
+        h2 {
+            font-size: 1.4rem;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge.mcap {
+            background: #fae8ff;
+            color: #a21caf;
+            border: 1px solid #f5d0fe;
+        }
+
+        .badge.class {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Diagnostic table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 8px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        caption {
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 0.78rem;
+            padding: 12px 16px;
+            background: #fbfdff;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Tier cards (collapsible) */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+        }
+
+        .btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn.small {
+            padding: 6px 10px;
+            font-size: 0.85rem;
+        }
+
+        .btn.primary {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .btn.primary:hover {
+            background: #364fc7;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin: 18px 0;
+            border-left: 6px solid transparent;
+            border-top: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+        }
+
+        .tier-card[aria-expanded="false"] .tier-content {
+            display: none;
+        }
+
+        .tier1 {
+            border-left-color: var(--accent-1);
+        }
+
+        .tier2 {
+            border-left-color: var(--accent-2);
+        }
+
+        .tier3 {
+            border-left-color: var(--accent-3);
+            background: #fffdf5;
+        }
+
+        .tier-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .tier-toggle {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tier-toggle:hover {
+            color: var(--text);
+        }
+
+        /* Worked Examples */
+        details.worked-example {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        details.worked-example summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        details.worked-example summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--accent-1);
+            transition: transform 0.2s;
+        }
+
+        details.worked-example[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .example-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        /* Interactive Tools */
+        .interactive-tool {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .interactive-tool h4 {
+            margin: 0 0 12px 0;
+            color: #1e3a8a;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .input-group input {
+            width: 70px;
+            padding: 8px;
+            border: 1px solid #93c5fd;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .result-box {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #dbeafe;
+            font-weight: 500;
+            min-height: 24px;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95em;
+            color: #b91c1c;
+        }
+
+        /* Print-friendly */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .tier-toggle,
+            .btn,
+            .nav-bar {
+                display: none;
+            }
+
+            .tier-card[aria-expanded="false"] .tier-content {
+                display: block;
+            }
+
+            details.worked-example[open] summary::before {
+                content: "";
+            }
+
+            details.worked-example .example-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <!-- Navigation -->
+        <nav class="nav-bar" aria-label="Unit Navigation">
+            <a href="Unit2_PartA_Quadratics.html" class="nav-link active">Part A: Quadratics</a>
+            <a href="Unit2_PartB_ComplexNumbers.html" class="nav-link">Part B: Complex Numbers</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="nav-link">Part C: Higher Polynomials</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="nav-link">Part D: Rational Functions</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="nav-link">Part E: MCAP Review</a>
+        </nav>
+
+        <header>
+            <h1>Unit 2 — Part A: Quadratic Expressions &amp; Equations</h1>
+            <p class="lead">Mastering the foundation of degree-2 polynomials for MCAP and beyond.</p>
+        </header>
+
+        <hr class="sep" />
+
+        <!-- 1. Pacing & Setup -->
+        <section>
+            <h2>1. Unit 2 Pacing &amp; Setup Overview <span class="badge mcap">Course Context</span></h2>
+
+            <blockquote>
+                <strong>Why Unit 2 Matters:</strong> Polynomials and rational models build the mathematical language of
+                engineering, data science, and physics. Whether optimizing profit in business or tracking projectile
+                motion, degree-2 and higher polynomials are the fundamental building blocks of real-world modeling.
+            </blockquote>
+
+            <p><strong>The 9–10 Week Blueprint:</strong></p>
+            <ul>
+                <li><strong>Weeks 1–2 (Part A):</strong> Quadratics Review, Advanced Solving, Transformations.</li>
+                <li><strong>Weeks 3–4 (Part B):</strong> Complex Roots &amp; The Imaginary Unit.</li>
+                <li><strong>Weeks 5–7 (Part C):</strong> Higher-Degree Polynomials, Long Division, Modeling.</li>
+                <li><strong>Weeks 8–9 (Part D):</strong> Rational Functions, Inverse Variation, Asymptotes.</li>
+                <li><strong>Week 10 (Part E):</strong> MCAP Preparation &amp; Cumulative Mock Exam.</li>
+            </ul>
+
+            <p><strong>Lesson Rhythm (Online):</strong></p>
+            <ol>
+                <li><em>Direct Instruction (8–12 min):</em> Core concept delivery using screen-share logic.</li>
+                <li><em>Guided Practice (10–15 min):</em> 2–3 worked examples across difficulty tiers (Easy → Medium →
+                    MCAP Challenge).</li>
+                <li><em>Independent Work (8–10 min):</em> Mini-exit tickets to check mastery.</li>
+            </ol>
+
+            <p><strong>Tools needed:</strong> <a href="https://www.desmos.com/calculator" target="_blank">Desmos
+                    Graphing Calculator</a>, notebook, and a willingness to make mistakes.</p>
+        </section>
+
+        <!-- 2. Diagnostic Gateway -->
+        <section>
+            <h2>2. Diagnostic Gateway <span class="badge class">Prerequisites</span></h2>
+            <p class="muted">Check these foundational skills before diving into advanced quadratics. If Tracy struggles
+                here, spiral back to Algebra 1 foundations immediately.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Test Question</th>
+                        <th scope="col">Pass Criteria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Expansion (Box/FOIL)</strong></td>
+                        <td>Expand \( (2x - 3)(x + 4) \)</td>
+                        <td>Produces \( 2x^2 + 5x - 12 \) smoothly</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Basic Factoring</strong></td>
+                        <td>Factor \( x^2 - x - 20 \)</td>
+                        <td>Finds \( (x - 5)(x + 4) \) targeting the constant</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parabola Identification</strong></td>
+                        <td>Identify vertex of \( y = x^2 - 4 \)</td>
+                        <td>States \( (0, -4) \) and knows it opens upward</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 3. Quadratic Forms -->
+        <section>
+            <h2>3. The Three Forms of a Quadratic <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 1 — What Each Form Reveals</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <ul>
+                        <li><strong>Standard Form:</strong> \( y = ax^2 + bx + c \)
+                            <br><span class="muted">Reveals the \( y \)-intercept (\( c \)). Opens up if \( a > 0 \),
+                                down if \( a < 0 \).</span>
+                        </li>
+                        <li><strong>Vertex Form:</strong> \( y = a(x - h)^2 + k \)
+                            <br><span class="muted">Reveals the vertex directly at \( (h, k) \). Best for graphing
+                                quickly.</span>
+                        </li>
+                        <li><strong>Factored (Intercept) Form:</strong> \( y = a(x - r_1)(x - r_2) \)
+                            <br><span class="muted">Reveals the \( x \)-intercepts (zeros or roots) at \( x = r_1 \) and
+                                \( x = r_2 \).</span>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Converting Between Forms</h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>To move between forms, apply algebraic operations:</p>
+                    <ul>
+                        <li><strong>Standard → Factored:</strong> Factor the trinomial.</li>
+                        <li><strong>Standard → Vertex:</strong> Complete the square, OR use \( x = \frac{-b}{2a} \) to
+                            find \( h \), then plug in to find \( k \).</li>
+                        <li><strong>Vertex/Factored → Standard:</strong> Expand (foil/box) and distribute \( a \).</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- 4. Solving by Factoring -->
+        <section>
+            <h2>4. Solving by Factoring <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 1 — The Zero Product Property</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>If \( A \times B = 0 \), then either \( A = 0 \) or \( B = 0 \). This is the absolute foundation
+                        of solving by factoring.</p>
+                    <ol>
+                        <li>Move everything to one side so the equation equals zero: \( ax^2 + bx + c = 0 \).</li>
+                        <li>Factor the polynomial completely. <strong>Always check for a GCF first!</strong></li>
+                        <li>Set each factor equal to zero and solve.</li>
+                    </ol>
+
+                    <details class="worked-example">
+                        <summary>Example: Simple Factoring (\( a = 1 \))</summary>
+                        <div class="example-content">
+                            <p><strong>Solve:</strong> \( x^2 - 7x = -10 \)</p>
+                            <p>1. Set to zero: \( x^2 - 7x + 10 = 0 \)</p>
+                            <p>2. Factor: <em>What adds to -7 and multiplies to 10?</em> (-5 and -2)</p>
+                            <p>3. Rewrite: \( (x - 5)(x - 2) = 0 \)</p>
+                            <p>4. Solve: \( x - 5 = 0 \implies x = 5 \), and \( x - 2 = 0 \implies x = 2 \)</p>
+                            <p><strong>Roots:</strong> \( \{2, 5\} \)</p>
+                        </div>
+                    </details>
+
+                    <details class="worked-example">
+                        <summary>Example: Harder Factoring (\( a \neq 1 \)) — The AC/Grouping Method</summary>
+                        <div class="example-content">
+                            <p><strong>Solve:</strong> \( 6x^2 + 7x - 3 = 0 \)</p>
+                            <p>1. Multiply \( a \times c \): \( 6 \times (-3) = -18 \). Now find two numbers that
+                                <strong>multiply to -18</strong> and <strong>add to +7</strong> (the middle
+                                coefficient).
+                            </p>
+                            <p>2. Those numbers are \( +9 \) and \( -2 \) because \( 9 \times (-2) = -18 \) and \( 9 +
+                                (-2) = 7 \).</p>
+                            <p>3. Split the middle term: \( 6x^2 + 9x - 2x - 3 = 0 \)</p>
+                            <p>4. Group into two pairs: \( (6x^2 + 9x) + (-2x - 3) = 0 \)</p>
+                            <p>5. Factor each group: \( 3x(2x + 3) - 1(2x + 3) = 0 \)</p>
+                            <p>6. Factor out the common binomial: \( (3x - 1)(2x + 3) = 0 \)</p>
+                            <p>7. Solve: \( x = \frac{1}{3} \) or \( x = -\frac{3}{2} \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <!-- 5. Quadratic Formula -->
+        <section>
+            <h2>5. The Quadratic Formula <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 1 — The Formula</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>When factoring gets messy (especially when \( a \neq 1 \) or roots are irrational/complex), use
+                        the formula.</p>
+                    <div style="font-size: 1.3rem; text-align: center; margin: 20px 0;">
+                        \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)
+                    </div>
+
+                    <details class="worked-example">
+                        <summary>Example: Solve \( 3x^2 + 2x - 5 = 0 \)</summary>
+                        <div class="example-content">
+                            <p>Here \( a = 3, b = 2, c = -5 \).</p>
+                            <p>Discriminant: \( (2)^2 - 4(3)(-5) = 4 + 60 = 64 \). Positive, so 2 real roots.</p>
+                            <p>\( x = \frac{-2 \pm \sqrt{64}}{2(3)} = \frac{-2 \pm 8}{6} \)</p>
+                            <p>\( x = \frac{-2 + 8}{6} = 1 \) or \( x = \frac{-2 - 8}{6} = \frac{-10}{6} = -\frac{5}{3}
+                                \)</p>
+                            <p><strong>Roots:</strong> \( \{1, -\frac{5}{3}\} \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Tutor Notes: Derivation context</h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>Don't let them just memorize it blindly. Remind Tracy that the formula is literally just the
+                        result of performing "Completing the Square" on the generic equation \( ax^2 + bx + c = 0 \). It
+                        is a shortcut algorithm.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- 6. Completing the Square -->
+        <section>
+            <h2>6. Completing the Square <span class="badge class">Classroom/MCAP</span></h2>
+            <p>This is the most structurally important algebraic manipulation in Algebra 2. It forces a perfect square
+                trinomial.</p>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Why Does "Half-and-Square" Work? (The Intuition)</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Think of it like building a square out of blocks. If you have \( x^2 + 6x \), imagine a square
+                        with side \( x \) (area \( x^2 \)) and a rectangle with dimensions \( x \times 6 \) (area \( 6x
+                        \)).</p>
+                    <p>Split that \( 6x \) rectangle in half: two strips of \( x \times 3 \). Attach one strip to the
+                        right of the square and one to the bottom. You now have an <strong>almost-complete</strong>
+                        bigger square with side \( (x + 3) \) — but there's a little \( 3 \times 3 = 9 \) gap in the
+                        bottom-right corner.</p>
+                    <p><strong>"Completing the square" literally means adding that missing 9 to fill the gap!</strong>
+                        That's WHY we take half of 6 (= 3) and square it (= 9). We're building a geometric square.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 2 — The Algorithm</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>To solve \( x^2 + 6x - 7 = 0 \):</p>
+                    <ol>
+                        <li>Move constant to the right: \( x^2 + 6x = 7 \)</li>
+                        <li>Take half of \( b \) (which is 6), square it, and add to BOTH sides: \( (\frac{6}{2})^2 = 9
+                            \).<br>
+                            \( x^2 + 6x + 9 = 7 + 9 \)</li>
+                        <li>Factor the left side as a perfect square: \( (x + 3)^2 = 16 \)</li>
+                        <li>Take the square root of both sides (don't forget \( \pm \) !): \( x + 3 = \pm 4 \)</li>
+                        <li>Solve for \( x \): \( x = -3 \pm 4 \), so \( x = 1 \) or \( x = -7 \).</li>
+                    </ol>
+                    <p class="muted">Note: If \( a \neq 1 \), factor \( a \) out of the \( x^2 \) and \( x \) terms
+                        first!</p>
+
+                    <div class="interactive-tool" style="background: #fff1f2; border-color: #fecdd3;">
+                        <h4 style="color: #be123c;">⚠️ Common D-Student Mistake</h4>
+                        <p><strong>Wrong:</strong> Adding 9 to the LEFT side but forgetting to add 9 to the RIGHT side.
+                        </p>
+                        <p>If you add something to one side of an equation and not the other, the equation is no longer
+                            balanced. It's mathematically illegal! <strong>Whatever you do to one side, you MUST do to
+                                the other.</strong></p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- 7. Discriminant -->
+        <section>
+            <h2>7. The Discriminant &amp; Nature of Solutions <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>The discriminant is the piece under the square root: \( \Delta = b^2 - 4ac \). It tells you <em>how
+                    many</em> and <em>what type</em> of roots exist without solving the whole equation.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Discriminant (\( \Delta \))</th>
+                        <th scope="col">Roots (Solutions)</th>
+                        <th scope="col">Graph (x-intercepts)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Positive</strong> (\( \Delta > 0 \))</td>
+                        <td>2 Real Roots</td>
+                        <td>Crosses x-axis twice</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero</strong> (\( \Delta = 0 \))</td>
+                        <td>1 Real Root (Repeated / Multiplicity 2)</td>
+                        <td>Vertex touches x-axis exactly once</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negative</strong> (\( \Delta < 0 \))</td>
+                        <td>2 Complex Roots (Conjugate pair)</td>
+                        <td>Does not cross the x-axis</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Discriminant Calculator -->
+            <div class="interactive-tool">
+                <h4>Interactive Discriminant Checker</h4>
+                <div class="input-group">
+                    <label>y = </label>
+                    <input type="number" id="a-val" value="1" placeholder="a"> <label>x² + </label>
+                    <input type="number" id="b-val" value="-4" placeholder="b"> <label>x + </label>
+                    <input type="number" id="c-val" value="5" placeholder="c">
+                    <button class="btn primary" id="calc-disc">Check Nature</button>
+                </div>
+                <div class="result-box" id="disc-result">Waiting for input...</div>
+            </div>
+        </section>
+
+        <!-- 8. Connecting Solutions & Systems -->
+        <section>
+            <h2>8. Graph Connections &amp; Systems <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier2" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Linear-Quadratic Systems</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Where does a line intersect a parabola? A system can have 0, 1, or 2 intersection points.</p>
+                    <p><strong>The Strategy: substitution.</strong></p>
+                    <ol>
+                        <li>Set the line equation equal to the parabola equation: \( mx + d = ax^2 + bx + c \)</li>
+                        <li>Move everything to one side to form a NEW quadratic: \( ax^2 + (b-m)x + (c-d) = 0 \)</li>
+                        <li>Solve this new quadratic (by factoring or formula). The \( x \)-values are the intersection
+                            coordinates.</li>
+                        <li>Plug \( x \) back into the <em>linear equation</em> to find the \( y \)-coordinates.</li>
+                    </ol>
+
+                    <details class="worked-example">
+                        <summary>Example: Solve the system \( y = x^2 - 2x \) and \( y = x + 4 \)</summary>
+                        <div class="example-content">
+                            <p>1. Set equal: \( x + 4 = x^2 - 2x \)</p>
+                            <p>2. Rearrange: \( 0 = x^2 - 3x - 4 \)</p>
+                            <p>3. Factor: \( 0 = (x - 4)(x + 1) \), so \( x = 4 \) or \( x = -1 \)</p>
+                            <p>4. Plug back into the <em>line</em> (easier equation):<br>
+                                \( x = 4 \implies y = 4 + 4 = 8 \)<br>
+                                \( x = -1 \implies y = -1 + 4 = 3 \)</p>
+                            <p><strong>Intersection points:</strong> \( (4, 8) \) and \( (-1, 3) \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <!-- 9. Transformations -->
+        <section>
+            <h2>9. Quadratic Transformations <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Looking at vertex form: \( y = a(x - h)^2 + k \)</p>
+            <ul>
+                <li><strong>\( a \) (Vertical Stretch/Compression):</strong> If \( |a| > 1 \), the parabola is stretched
+                    (narrower). If \( 0 < |a| < 1 \), it is compressed (wider). If \( a \) is negative, it reflects
+                        across the x-axis.</li>
+                <li><strong>\( h \) (Horizontal Shift):</strong> Shifts exactly \( h \) units. Watch the sign! \( (x -
+                    3)^2 \) moves RIGHT 3. \( (x + 4)^2 \) moves LEFT 4.</li>
+                <li><strong>\( k \) (Vertical Shift):</strong> Shifts exactly \( k \) units up or down.</li>
+            </ul>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- 10. Formative Check -->
+        <section>
+            <h2>10. Formative Check &amp; Practice</h2>
+
+            <p><strong>Practice:</strong></p>
+            <ol>
+                <li>Solve by factoring: \( 2x^2 - 11x + 12 = 0 \)</li>
+                <li>Solve using completing the square: \( x^2 - 8x + 5 = 0 \)</li>
+                <li>Find the discriminant and state the number of real roots: \( -3x^2 + 6x - 4 = 0 \)</li>
+                <li>Write the quadratic \( y = x^2 + 10x + 24 \) in vertex form. Determine the vertex and
+                    transformations applied to the parent function \( y = x^2 \).</li>
+            </ol>
+
+            <details class="worked-example">
+                <summary>Solutions (Expand to check)</summary>
+                <div class="example-content">
+                    <p><strong>1. Factoring:</strong> \( (2x - 3)(x - 4) = 0 \implies x = \frac{3}{2}, x = 4 \)</p>
+                    <p><strong>2. Completing Square:</strong> \( x^2 - 8x + 16 = -5 + 16 \implies (x-4)^2 = 11 \implies
+                        x = 4 \pm \sqrt{11} \)</p>
+                    <p><strong>3. Discriminant:</strong> \( b^2 - 4ac = (6)^2 - 4(-3)(-4) = 36 - 48 = -12 \). Because it
+                        is negative, there are <strong>0 real roots</strong> (it has 2 complex roots).</p>
+                    <p><strong>4. Vertex Form:</strong> \( y = (x^2 + 10x + 25) + 24 - 25 \implies y = (x + 5)^2 - 1 \).
+                        Vertex is \( (-5, -1) \). Shifted left 5, down 1.</p>
+                </div>
+            </details>
+
+            <!-- Mini Exit Ticket -->
+            <div class="interactive-tool" style="background: #fdf4ff; border-color: #f5d0fe;">
+                <h4 style="color: #a21caf;">Mini Exit Ticket</h4>
+                <p>A student claims that the system \( y = x^2 + 2 \) and \( y = x \) has no real solutions. Verify this
+                    algebraically using the discriminant. Why does this make geometric sense?</p>
+                <p class="muted" style="margin-top: 12px; font-size: 0.9em;"><em>Hint: Set them equal and find \( \Delta
+                        \) of the new equation. Sketch a quick graph.</em></p>
+            </div>
+        </section>
+
+        <!-- Footer Nav -->
+        <div
+            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
+            <div></div> <!-- Spacer -->
+            <a href="Unit2_PartB_ComplexNumbers.html" class="btn primary">Proceed to Part B: Complex Numbers →</a>
+        </div>
+    </div>
+
+    <!-- Interactivity Script -->
+    <script>
+        // Tier Collapse/Expand logic
+        document.querySelectorAll('.tier-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const article = btn.closest('.tier-card');
+                const expanded = article.getAttribute('aria-expanded') === 'true';
+                article.setAttribute('aria-expanded', String(!expanded));
+                btn.setAttribute('aria-expanded', String(!expanded));
+                btn.textContent = expanded ? 'Show' : 'Hide';
+            });
+        });
+
+        // Discriminant Calculator Logic
+        const btnCalc = document.getElementById('calc-disc');
+        if (btnCalc) {
+            btnCalc.addEventListener('click', () => {
+                const a = parseFloat(document.getElementById('a-val').value) || 0;
+                const b = parseFloat(document.getElementById('b-val').value) || 0;
+                const c = parseFloat(document.getElementById('c-val').value) || 0;
+
+                const delta = (b * b) - (4 * a * c);
+                const resultBox = document.getElementById('disc-result');
+
+                if (a === 0) {
+                    resultBox.innerHTML = `<span style="color: #b91c1c;">Not a quadratic (a cannot be 0).</span>`;
+                    return;
+                }
+
+                let nature = "";
+                let color = "";
+                if (delta > 0) {
+                    nature = "2 Real Intercepts (Crosses twice)";
+                    color = "#047857"; // green
+                } else if (delta === 0) {
+                    nature = "1 Real Intercept (Vertex touches axis)";
+                    color = "#b45309"; // orange
+                } else {
+                    nature = "2 Complex Roots (Does not cross axis)";
+                    color = "#b91c1c"; // red
+                }
+
+                resultBox.innerHTML = `<strong>Δ = ${delta}</strong><br><span style="color: ${color};">${nature}</span>`;
+            });
+        }
+    </script>
+</body>
+
+</html>

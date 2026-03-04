@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Part B: Complex Numbers</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax for rendering math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #845ef7;
+            /* Purple Theme for Complex Numbers */
+            --accent-2: #495057;
+            --accent-3: #fab005;
+            --mcap-color: #d946ef;
+            --class-color: #10b981;
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .nav-link.active {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings & Badges */
+        h2 {
+            font-size: 1.4rem;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge.mcap {
+            background: #fae8ff;
+            color: #a21caf;
+            border: 1px solid #f5d0fe;
+        }
+
+        .badge.class {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Tier cards (collapsible) */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+        }
+
+        .btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn.primary {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .btn.primary:hover {
+            background: #7048e8;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin: 18px 0;
+            border-left: 6px solid transparent;
+            border-top: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+        }
+
+        .tier-card[aria-expanded="false"] .tier-content {
+            display: none;
+        }
+
+        .tier1 {
+            border-left-color: var(--accent-1);
+        }
+
+        .tier2 {
+            border-left-color: var(--accent-2);
+        }
+
+        .tier3 {
+            border-left-color: var(--accent-3);
+            background: #fffdf5;
+        }
+
+        .tier-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .tier-toggle {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tier-toggle:hover {
+            color: var(--text);
+        }
+
+        /* Worked Examples */
+        details.worked-example {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        details.worked-example summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        details.worked-example summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--accent-1);
+            transition: transform 0.2s;
+        }
+
+        details.worked-example[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .example-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        /* Visual Boxes */
+        .concept-box {
+            background: #f3f0ff;
+            border: 1px solid #e5dbff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.05rem;
+            color: #3b5bdb;
+        }
+
+        .interactive-tool {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95em;
+            color: #b91c1c;
+        }
+
+        /* Definition table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            text-align: left;
+        }
+
+        th {
+            background: #fbfdff;
+            color: #374151;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .tier-toggle,
+            .btn,
+            .nav-bar {
+                display: none;
+            }
+
+            .tier-card[aria-expanded="false"] .tier-content {
+                display: block;
+            }
+
+            details.worked-example[open] summary::before {
+                content: "";
+            }
+
+            details.worked-example .example-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <!-- Navigation -->
+        <nav class="nav-bar" aria-label="Unit Navigation">
+            <a href="Unit2_PartA_Quadratics.html" class="nav-link">Part A: Quadratics</a>
+            <a href="Unit2_PartB_ComplexNumbers.html" class="nav-link active">Part B: Complex Numbers</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="nav-link">Part C: Higher Polynomials</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="nav-link">Part D: Rational Functions</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="nav-link">Part E: MCAP Review</a>
+        </nav>
+
+        <header>
+            <h1>Unit 2 — Part B: Complex Numbers</h1>
+            <p class="lead">Expanding the number system to solve "impossible" equations.</p>
+        </header>
+
+        <hr class="sep" />
+
+        <!-- 1. Why Complex Numbers? -->
+        <section>
+            <h2>1. Why Do We Need Them? <span class="badge mcap">Course Context</span></h2>
+
+            <p>In Part A, we saw that sometimes a quadratic equation leaves a negative number under the square root
+                (when the discriminant \( \Delta < 0 \)).</p>
+                    <p>For example: \( x^2 = -9 \). In the real number system, this has no solution because any real
+                        number multiplied by itself is positive. But mathematicians realized that stopping at "no
+                        solution" broke many useful properties of algebra. We needed a new rule.</p>
+
+                    <blockquote>
+                        <strong>The Imaginary Unit:</strong> We define a special number, \( i \), such that \( i^2 = -1
+                        \).
+                    </blockquote>
+        </section>
+
+        <!-- 2. The Imaginary Unit i -->
+        <section>
+            <h2>2. The Imaginary Unit \( i \) <span class="badge mcap">MCAP Essential</span></h2>
+
+            <div class="concept-box">
+                <strong>Core Definition:</strong> \( i = \sqrt{-1} \)
+            </div>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Tier 1 — The Cycle of Powers</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Because \( i = \sqrt{-1} \), multiplying \( i \) by itself creates a predictable cycle of 4
+                        values:</p>
+                    <ul>
+                        <li>\( i^1 = i \)</li>
+                        <li>\( i^2 = -1 \)</li>
+                        <li>\( i^3 = -i \) <span class="muted">because \( i^2 \times i = -1 \times i \)</span></li>
+                        <li>\( i^4 = 1 \) <span class="muted">because \( (-1) \times (-1) = 1 \)</span></li>
+                        <li>\( i^5 = i \) <span class="muted">(The cycle repeats!)</span></li>
+                    </ul>
+                    <p><strong>Trick:</strong> To evaluate large powers of \( i \) (like \( i^{35} \)), divide the
+                        exponent by 4 and look at the remainder. The remainder corresponds to the power in the cycle
+                        list above. \( 35 \div 4 = 8 \) remainder \( 3 \), so \( i^{35} = i^3 = -i \).</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Standard Form of a Complex Number</h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>A complex number has a <strong>real part</strong> and an <strong>imaginary part</strong>. They
+                        cannot be combined into a single term.</p>
+                    <p><strong>Standard Form:</strong> \( a + bi \)</p>
+                    <ul>
+                        <li>\( 3 + 2i \) (Real part: 3, Imaginary part: 2)</li>
+                        <li>\( 5 \) (Real part: 5, Imaginary part: 0. All real numbers are complex numbers!)</li>
+                        <li>\( -4i \) (Real part: 0, Imaginary part: -4. Purely imaginary number.)</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3. Complex Number Arithmetic -->
+        <section>
+            <h2>3. Complex Number Arithmetic <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Treat \( i \) exactly like the variable \( x \), but whenever you get an \( i^2 \), replace it with \( -1
+                \).</p>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Addition &amp; Subtraction</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Combine like terms. Reals with reals, imaginaries with imaginaries.</p>
+                    <details class="worked-example">
+                        <summary>Example: \( (4 - 2i) - (1 + 5i) \)</summary>
+                        <div class="example-content">
+                            <p>Distribute the negative: \( 4 - 2i - 1 - 5i \)</p>
+                            <p>Combine Reals: \( 4 - 1 = 3 \)</p>
+                            <p>Combine Imaginaries: \( -2i - 5i = -7i \)</p>
+                            <p><strong>Answer:</strong> \( 3 - 7i \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Multiplication</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Use FOIL/Box method, then replace \( i^2 \) with \(-1\).</p>
+                    <details class="worked-example">
+                        <summary>Example: \( (2 + 3i)(4 - i) \)</summary>
+                        <div class="example-content">
+                            <p>FOIL: \( (2\times4) + (2\times-i) + (3i\times4) + (3i\times-i) \)</p>
+                            <p>Simplify: \( 8 - 2i + 12i - 3i^2 \)</p>
+                            <p>Combine: \( 8 + 10i - 3(-1) \)</p>
+                            <p>Replace \( i^2 \): \( 8 + 10i + 3 \)</p>
+                            <p><strong>Answer:</strong> \( 11 + 10i \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Division &amp; Complex Conjugates</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>You cannot leave an \( i \) in the denominator. Multiply the numerator and denominator by the
+                        <strong>complex conjugate</strong> of the denominator.</p>
+                    <p>The conjugate of \( (a + bi) \) is \( (a - bi) \). When you multiply them, the \( i \) terms
+                        cancel out entirely: \( (a+bi)(a-bi) = a^2 - b^2i^2 = a^2 + b^2 \).</p>
+                    <details class="worked-example">
+                        <summary>Example: \( \frac{3}{1 - 2i} \)</summary>
+                        <div class="example-content">
+                            <p>Conjugate of the denominator is \( (1 + 2i) \).</p>
+                            <p>Multiply both by conjugate: \( \frac{3 \times (1 + 2i)}{(1 - 2i)(1 + 2i)} \)</p>
+                            <p>Top: \( 3 + 6i \)</p>
+                            <p>Bottom: \( 1^2 - (2i)^2 = 1 - 4(-1) = 1 + 4 = 5 \)</p>
+                            <p><strong>Answer:</strong> \( \frac{3 + 6i}{5} \) or standard form \( \frac{3}{5} +
+                                \frac{6}{5}i \)</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <!-- 4. Complex Solutions of Quadratics -->
+        <section>
+            <h2>4. Complex Solutions of Quadratics <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>If the quadratic formula yields a negative under the radical, we extract the \( i \) to write the complex
+                solutions.</p>
+
+            <div class="concept-box" style="background: #fffdf5; border-color: #fef08a; color: #b45309;">
+                <strong>Key Rule:</strong> Complex roots always come in conjugate pairs! If \( 3 + 4i \) is a root, \( 3
+                - 4i \) must also be a root.
+            </div>
+
+            <details class="worked-example" open>
+                <summary>Example: Solve \( x^2 - 4x + 13 = 0 \)</summary>
+                <div class="example-content">
+                    <p>Formula: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</p>
+                    <p>\( a=1, b=-4, c=13 \)</p>
+                    <p>Discriminant: \( (-4)^2 - 4(1)(13) = 16 - 52 = -36 \)</p>
+                    <p>Since \( \Delta = -36 \), we have two complex roots.</p>
+                    <p>Substitute: \( x = \frac{4 \pm \sqrt{-36}}{2} \)</p>
+                    <p>Simplify radical: \( \sqrt{-36} = \sqrt{36} \times \sqrt{-1} = 6i \)</p>
+                    <p>\( x = \frac{4 \pm 6i}{2} \)</p>
+                    <p>Divide both terms by 2: \( x = 2 \pm 3i \)</p>
+                    <p><strong>Roots:</strong> \( \{2 + 3i, 2 - 3i\} \)</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 5. The Complex Number Plane -->
+        <section>
+            <h2>5. The Complex Number Plane (Argand Diagram) <span class="badge class">Classroom/MCAP</span></h2>
+
+            <p>Because a complex number has two distinct parts (\( a \) and \( b \)), we can't plot it on a standard 1D
+                number line. We need a 2D plane.</p>
+            <ul>
+                <li><strong>x-axis:</strong> Becomes the Real Axis</li>
+                <li><strong>y-axis:</strong> Becomes the Imaginary Axis</li>
+            </ul>
+            <p>To plot \( z = -3 + 2i \), you move <em>left 3</em> on the real axis, and <em>up 2</em> on the imaginary
+                axis. It looks exactly like plotting the coordinate point \( (-3, 2) \) on a normal Cartesian graph.</p>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- 6. Formative Check -->
+        <section>
+            <h2>6. Formative Check &amp; Practice <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p><strong>Practice:</strong></p>
+            <ol>
+                <li>Simplify: \( (5 - 3i) + (2 + 7i) \)</li>
+                <li>Multiply: \( (4 - i)^2 \)</li>
+                <li>Divide: \( \frac{2 + i}{3 + i} \)</li>
+                <li>Solve for x using the quadratic formula: \( 2x^2 + 2x + 5 = 0 \)</li>
+                <li>Evaluate: \( i^{51} \)</li>
+            </ol>
+
+            <details class="worked-example">
+                <summary>Solutions (Expand to check)</summary>
+                <div class="example-content">
+                    <p><strong>1. Addition:</strong> \( (5+2) + (-3i+7i) = 7 + 4i \)</p>
+                    <p><strong>2. Multiplication:</strong> \( (4-i)(4-i) = 16 - 4i - 4i + i^2 = 16 - 8i - 1 = 15 - 8i \)
+                    </p>
+                    <p><strong>3. Division:</strong> Multiply top/bottom by conjugate \( (3-i) \).<br>
+                        Top: \( (2+i)(3-i) = 6 - 2i + 3i - i^2 = 6 + i + 1 = 7 + i \)<br>
+                        Bottom: \( (3+i)(3-i) = 9 - i^2 = 9 + 1 = 10 \)<br>
+                        <strong>Answer:</strong> \( \frac{7}{10} + \frac{1}{10}i \)
+                    </p>
+                    <p><strong>4. Formula:</strong> \( \Delta = 2^2 - 4(2)(5) = 4 - 40 = -36 \).<br>
+                        \( x = \frac{-2 \pm \sqrt{-36}}{4} = \frac{-2 \pm 6i}{4} = \frac{-1 \pm 3i}{2} \)</p>
+                    <p><strong>5. Power of i:</strong> \( 51 \div 4 = 12 \) remainder \( 3 \). \( i^{51} = i^3 = -i \).
+                    </p>
+                </div>
+            </details>
+
+            <!-- Mini Exit Ticket -->
+            <div class="interactive-tool" style="background: #fdf4ff; border-color: #f5d0fe;">
+                <h4 style="color: #a21caf;">Mini Exit Ticket</h4>
+                <p>A fellow student writes down \( \sqrt{-25} \times \sqrt{-4} = \sqrt{(-25)(-4)} = \sqrt{100} = 10 \).
+                    Is this correct or mathematically flawed? If flawed, show the correct methodology using the
+                    imaginary unit \( i \).</p>
+                <p class="muted" style="margin-top: 12px; font-size: 0.9em;"><em>Hint: Try converting to 'i' form BEFORE
+                        multiplying.</em></p>
+            </div>
+        </section>
+
+        <!-- Footer Nav -->
+        <div
+            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
+            <a href="Unit2_PartA_Quadratics.html" class="btn">← Back to Part A</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="btn primary">Proceed to Part C: Higher Polynomials →</a>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.querySelectorAll('.tier-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const article = btn.closest('.tier-card');
+                const expanded = article.getAttribute('aria-expanded') === 'true';
+                article.setAttribute('aria-expanded', String(!expanded));
+                btn.setAttribute('aria-expanded', String(!expanded));
+                btn.textContent = expanded ? 'Show' : 'Hide';
+            });
+        });
+    </script>
+</body>
+
+</html>

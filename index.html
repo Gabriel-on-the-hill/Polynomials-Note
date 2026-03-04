@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Polynomial & Rational Functions</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent: #818cf8;
+            --accent-hover: #6366f1;
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(129, 140, 248, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .card:nth-child(1)::before {
+            background: #3b82f6;
+        }
+
+        .card:nth-child(2)::before {
+            background: #a855f7;
+        }
+
+        .card:nth-child(3)::before {
+            background: #10b981;
+        }
+
+        .card:nth-child(4)::before {
+            background: #f59e0b;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(129, 140, 248, 0.15);
+        }
+
+        .card-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .card-full {
+            grid-column: 1 / -1;
+        }
+
+        .card-full::before {
+            background: linear-gradient(90deg, #e11d48, #f59e0b);
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 560px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span class="badge">Algebra 2 · Unit 2</span>
+        <h1>Polynomial & Rational Functions</h1>
+        <p class="subtitle">The complete Excellence Bible for mastering quadratics, complex numbers, higher-degree
+            polynomials, and rational functions. Built for MCAP success.</p>
+
+        <div class="cards">
+            <a href="Unit2_PartA_Quadratics.html" class="card">
+                <div class="card-label">Part A · Weeks 1–2</div>
+                <h3>Quadratic Expressions & Equations</h3>
+                <p>Forms, factoring, formula, completing the square, discriminant, transformations.</p>
+            </a>
+
+            <a href="Unit2_PartB_ComplexNumbers.html" class="card">
+                <div class="card-label">Part B · Weeks 3–4</div>
+                <h3>Complex Numbers</h3>
+                <p>Imaginary unit, operations, conjugates, complex solutions, Argand plane.</p>
+            </a>
+
+            <a href="Unit2_PartC_HigherPolynomials.html" class="card">
+                <div class="card-label">Part C · Weeks 5–7</div>
+                <h3>Higher-Degree Polynomials</h3>
+                <p>End behavior, zeros, multiplicity, division methods, rational root theorem, modeling.</p>
+            </a>
+
+            <a href="Unit2_PartD_RationalFunctions.html" class="card">
+                <div class="card-label">Part D · Weeks 8–9</div>
+                <h3>Rational Functions</h3>
+                <p>Asymptotes, holes, inverse variation, transformations, solving rational equations.</p>
+            </a>
+
+            <a href="Unit2_PartE_Review_MCAP.html" class="card card-full">
+                <div class="card-label">Part E · Week 10</div>
+                <h3>Unit Review & MCAP Strategies</h3>
+                <p>Concept map, formula reference, common pitfalls, cumulative practice, and exam tips.</p>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Tracy's Algebra 2 · Excellence Bible Series</p>
+        </div>
+    </div>
+</body>
+
+</html>

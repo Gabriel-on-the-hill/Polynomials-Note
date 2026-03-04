@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Unit 2 Excellence Bible — Part D: Rational Functions</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <!-- MathJax for rendering math -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #10b981;
+            /* Emerald Green for Rationals */
+            --accent-2: #495057;
+            --accent-3: #fab005;
+            --mcap-color: #d946ef;
+            --class-color: #10b981;
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Nav Bar */
+        .nav-bar {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            background: #f1f5f9;
+            color: #334155;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .nav-link.active {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #e2e8f0;
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings & Badges */
+        h2 {
+            font-size: 1.4rem;
+            margin: 32px 0 16px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge.mcap {
+            background: #fae8ff;
+            color: #a21caf;
+            border: 1px solid #f5d0fe;
+        }
+
+        .badge.class {
+            background: #d1fae5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Tier cards (collapsible) */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+        }
+
+        .btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn.primary {
+            background: var(--accent-1);
+            color: white;
+            border-color: var(--accent-1);
+        }
+
+        .btn.primary:hover {
+            background: #059669;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin: 18px 0;
+            border-left: 6px solid transparent;
+            border-top: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+        }
+
+        .tier-card[aria-expanded="false"] .tier-content {
+            display: none;
+        }
+
+        .tier1 {
+            border-left-color: var(--accent-1);
+        }
+
+        .tier2 {
+            border-left-color: var(--accent-2);
+        }
+
+        .tier3 {
+            border-left-color: var(--accent-3);
+            background: #fffdf5;
+        }
+
+        .tier-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .tier-toggle {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .tier-toggle:hover {
+            color: var(--text);
+        }
+
+        /* Worked Examples */
+        details.worked-example {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        details.worked-example summary {
+            font-weight: 600;
+            cursor: pointer;
+            color: #0f172a;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        details.worked-example summary::before {
+            content: "▶";
+            font-size: 0.8em;
+            color: var(--accent-1);
+            transition: transform 0.2s;
+        }
+
+        details.worked-example[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .example-content {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        /* Visual Boxes */
+        .concept-box {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.05rem;
+            color: #047857;
+        }
+
+        .interactive-tool {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 24px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95em;
+            color: #b91c1c;
+        }
+
+        /* Definition table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        th,
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: #fbfdff;
+            color: #374151;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+                padding: 0;
+            }
+
+            .container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .tier-toggle,
+            .btn,
+            .nav-bar {
+                display: none;
+            }
+
+            .tier-card[aria-expanded="false"] .tier-content {
+                display: block;
+            }
+
+            details.worked-example[open] summary::before {
+                content: "";
+            }
+
+            details.worked-example .example-content {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <!-- Navigation -->
+        <nav class="nav-bar" aria-label="Unit Navigation">
+            <a href="Unit2_PartA_Quadratics.html" class="nav-link">Part A: Quadratics</a>
+            <a href="Unit2_PartB_ComplexNumbers.html" class="nav-link">Part B: Complex Numbers</a>
+            <a href="Unit2_PartC_HigherPolynomials.html" class="nav-link">Part C: Higher Polynomials</a>
+            <a href="Unit2_PartD_RationalFunctions.html" class="nav-link active">Part D: Rational Functions</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="nav-link">Part E: MCAP Review</a>
+        </nav>
+
+        <header>
+            <h1>Unit 2 — Part D: Rational Functions</h1>
+            <p class="lead">Understanding the behavior of polynomials divided by polynomials.</p>
+        </header>
+
+        <hr class="sep" />
+
+        <!-- 1. Rational Expressions -->
+        <section>
+            <h2>1. Rational Expressions &amp; Simplification <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>A rational expression is a fraction where both the numerator and the denominator are polynomials. Since
+                you cannot divide by zero, rational functions always have <strong>domain restrictions</strong> wherever
+                the denominator equals zero.</p>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Simplifying Rational Expressions</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p><strong>Rule #1 of Rationals: You cannot cancel terms that are added or subtracted. You can only
+                            cancel FACTORS.</strong></p>
+                    <ol>
+                        <li>Factor the numerator completely.</li>
+                        <li>Factor the denominator completely.</li>
+                        <li>Cancel factors that appear in BOTH the numerator and the denominator.</li>
+                        <li>State domain restrictions based on the <em>original, unfactored</em> denominator.</li>
+                    </ol>
+                    <details class="worked-example">
+                        <summary>Example: Simplify \( \frac{x^2 + 5x + 6}{x^2 - 4} \)</summary>
+                        <div class="example-content">
+                            <p>1. Factor top: \( (x + 2)(x + 3) \)</p>
+                            <p>2. Factor bottom (difference of squares): \( (x + 2)(x - 2) \)</p>
+                            <p>3. Domain restrictions: \( x \neq 2, x \neq -2 \) (because these make the bottom zero).
+                            </p>
+                            <p>4. Cancel the common factor \( (x + 2) \).</p>
+                            <p><strong>Result:</strong> \( \frac{x + 3}{x - 2} \) for \( x \neq -2, 2 \).</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <!-- 2. Operations -->
+        <section>
+            <h2>2. Operations with Rational Expressions <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Operate on them just like numeric fractions, but with polynomials.</p>
+
+            <ul>
+                <li><strong>Multiply:</strong> Factor everything. Multiply straight across. Cancel common factors.</li>
+                <li><strong>Divide:</strong> "Keep, Change, Flip." Multiply the first fraction by the reciprocal of the
+                    second. Then follow multiplication rules.</li>
+                <li><strong>Add/Subtract:</strong> You MUST find a Least Common Denominator (LCD). Multiply the top and
+                    bottom of each fraction by the "missing" factors. Combine numerators over the single common
+                    denominator.</li>
+            </ul>
+
+            <details class="worked-example">
+                <summary>Example: Add \( \frac{2}{x+1} + \frac{x}{x-3} \)</summary>
+                <div class="example-content">
+                    <p><strong>LCD:</strong> \( (x+1)(x-3) \)</p>
+                    <p>Rewrite each fraction: \( \frac{2(x-3)}{(x+1)(x-3)} + \frac{x(x+1)}{(x+1)(x-3)} \)</p>
+                    <p>Expand tops: \( \frac{2x - 6}{\text{LCD}} + \frac{x^2 + x}{\text{LCD}} \)</p>
+                    <p>Combine: \( \frac{x^2 + 3x - 6}{(x+1)(x-3)} \)</p>
+                    <p>Check if the numerator factors further (it doesn't). <strong>Done.</strong></p>
+                    <p>Restrictions: \( x \neq -1, 3 \).</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 3. Inverse Variation -->
+        <section>
+            <h2>3. Inverse Variation &amp; The Parent Graph <span class="badge mcap">MCAP Focus</span></h2>
+
+            <p>The simplest rational function is inverse variation: \( y = \frac{k}{x} \). As \( x \) gets larger, \( y
+                \) gets smaller, and vice versa. \( k \) is the "constant of variation."</p>
+
+            <blockquote>
+                <strong>Real-World Analogy:</strong> 12 slices of pizza shared among \( x \) people. Each person gets \(
+                y = \frac{12}{x} \) slices. 2 people = 6 slices each. 6 people = 2 slices each. 12 people = 1 slice
+                each. As the number of people goes up, the slices per person goes down. That's inverse variation!
+            </blockquote>
+
+            <div class="concept-box">
+                <strong>The Parent Function:</strong> \( f(x) = \frac{1}{x} \)<br>
+                Its graph forms a <em>hyperbola</em> with two distinct branches in quadrants I and III. It has a
+                vertical asymptote at \( x = 0 \) and horizontal asymptote at \( y = 0 \).
+            </div>
+
+            <details class="worked-example">
+                <summary>Example: Finding \( k \) from a table</summary>
+                <div class="example-content">
+                    <p>If \( y \) varies inversely with \( x \), and \( y = 8 \) when \( x = 3 \), find the equation.
+                    </p>
+                    <p>1. Start with the model: \( y = \frac{k}{x} \)</p>
+                    <p>2. Plug in the known values: \( 8 = \frac{k}{3} \)</p>
+                    <p>3. Solve for \( k \): \( k = 8 \times 3 = 24 \)</p>
+                    <p><strong>Equation:</strong> \( y = \frac{24}{x} \). Now you can find \( y \) for any \( x \).</p>
+                </div>
+            </details>
+        </section>
+
+        <!-- 4. Asymptotes & Holes -->
+        <section>
+            <h2>4. Asymptotes &amp; Holes <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>Rational functions have distinct boundaries and breaks in their graphs.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Definition</th>
+                        <th>How to Find It (For \( f(x) = \frac{N(x)}{D(x)} \))</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hole (Removable Discontinuity)</strong></td>
+                        <td>A single missing point on the curve.</td>
+                        <td>Occurs when a factor cancels out completely from top and bottom. Set that canceled factor =
+                            0 to find the x-coordinate.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vertical Asymptote (VA)</strong></td>
+                        <td>An invisible vertical line the graph approaches but never crosses.</td>
+                        <td>Set any remaining (uncanceled) factors in the denominator equal to 0.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Horizontal Asymptote (HA)</strong></td>
+                        <td>An invisible horizontal line indicating the graph's end behavior.</td>
+                        <td>
+                            Compare Degrees of top (\( n \)) and bottom (\( m \)):<br>
+                            If \( n < m \): HA is \( y=0 \)<br>
+                                If \( n = m \): HA is \( y = \frac{a}{b} \) (ratio of leading coefficients)<br>
+                                If \( n > m \): No HA.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <article class="tier-card tier1" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>Why Does the Degree Rule for HA Work? (The Intuition)</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Imagine plugging in \( x = 1{,}000{,}000 \). When \( x \) is astronomically large, the
+                        lower-order terms like \( +3x \) or \( -7 \) become <strong>irrelevant noise</strong> compared
+                        to the leading terms.</p>
+                    <p>So \( \frac{5x^2 + 3x - 1}{2x^2 - 7} \) basically becomes \( \frac{5x^2}{2x^2} = \frac{5}{2} \).
+                        That's why HA = ratio of leading coefficients when degrees match!</p>
+                    <p>And if the top degree is smaller? The top is "weaker" than the bottom, so the fraction crushes
+                        down to zero. Hence HA = \( y = 0 \).</p>
+                </div>
+            </article>
+
+            <details class="worked-example">
+                <summary>Complete Example: Analyze \( f(x) = \frac{x^2 - 9}{x^2 - x - 6} \)</summary>
+                <div class="example-content">
+                    <p><strong>Step 1 — Factor everything:</strong></p>
+                    <p>Top: \( x^2 - 9 = (x-3)(x+3) \) (difference of squares)</p>
+                    <p>Bottom: \( x^2 - x - 6 = (x-3)(x+2) \)</p>
+                    <p><strong>Step 2 — Hole?</strong> \( (x-3) \) cancels from top and bottom. Hole at \( x = 3 \).</p>
+                    <p>To find the y-coordinate of the hole, plug \( x=3 \) into the <em>simplified</em> function: \(
+                        \frac{3+3}{3+2} = \frac{6}{5} \). Hole at \( (3, \frac{6}{5}) \).</p>
+                    <p><strong>Step 3 — VA?</strong> Remaining denominator factor: \( (x+2) = 0 \implies x = -2 \).
+                        <strong>VA at \( x = -2 \).</strong>
+                    </p>
+                    <p><strong>Step 4 — HA?</strong> Original degrees: top is 2, bottom is 2. Degrees match! HA = ratio
+                        of leading coefficients = \( \frac{1}{1} = 1 \). <strong>HA at \( y = 1 \).</strong></p>
+                    <p><strong>Step 5 — x-intercept?</strong> Remaining numerator: \( (x+3) = 0 \implies x = -3 \).
+                        x-intercept at \( (-3, 0) \).</p>
+                </div>
+            </details>
+
+            <article class="tier-card tier3" aria-expanded="false">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Oblique (Slant) Asymptotes <span class="badge class"
+                            style="background:transparent;border:0;color:#047857;">★ Classroom Optional</span></h3>
+                    <button class="tier-toggle" aria-expanded="false">Show</button>
+                </div>
+                <div class="tier-content">
+                    <p>If the degree of the numerator is EXACTLY ONE greater than the denominator (\( n = m + 1 \)), the
+                        graph has a diagonal "slant" asymptote instead of a horizontal one.</p>
+                    <p><strong>How to find it:</strong> Perform polynomial long division. The quotient (ignoring the
+                        remainder) is the equation of the line \( y = mx + b \) for the oblique asymptote.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- 5. Transformations -->
+        <section>
+            <h2>5. Transformations of Rational Functions <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p>You can transform the parent function \( y = \frac{1}{x} \) just like parabolas. The general form is:</p>
+            <div style="font-size: 1.2rem; text-align: center; margin: 16px 0;">
+                \( y = \frac{a}{x - h} + k \)
+            </div>
+
+            <ul>
+                <li><strong>\( a \) (Vertical Stretch/Compression):</strong> Stretches branches further from the center.
+                    If negative, reflects across x-axis (branches move to Q2 and Q4).</li>
+                <li><strong>\( h \) (Horizontal Shift):</strong> Moves the Vertical Asymptote Left/Right. \( (x - 3) \)
+                    moves VA to \( x=3 \).</li>
+                <li><strong>\( k \) (Vertical Shift):</strong> Moves the Horizontal Asymptote Up/Down. \( + 4 \) moves
+                    HA to \( y=4 \).</li>
+            </ul>
+        </section>
+
+        <!-- 6. Graphing -->
+        <section>
+            <h2>6. Graphing Rational Functions</h2>
+
+            <p><strong>Step-by-Step Master Procedure:</strong></p>
+            <ol>
+                <li><strong>Factor entirely!</strong> Numerator and denominator.</li>
+                <li><strong>Find Holes:</strong> Note any canceled factors.</li>
+                <li><strong>Find VA:</strong> Set remaining denominator factors to zero. Graph as dashed vertical lines.
+                </li>
+                <li><strong>Find HA or SA:</strong> Compare highest degrees. Graph as dashed line.</li>
+                <li><strong>Find x-intercepts:</strong> Set remaining numerator factors to zero. Plot them.</li>
+                <li><strong>Find y-intercept:</strong> Plug in \( x = 0 \). Plot it.</li>
+                <li><strong>Sketch:</strong> Draw the branches hugging the asymptotes and passing through the
+                    intercepts. Use test points if a region is ambiguous.</li>
+            </ol>
+        </section>
+
+        <!-- 7. Solving Equations -->
+        <section>
+            <h2>7. Solving Rational Equations <span class="badge mcap">MCAP Essential</span></h2>
+
+            <article class="tier-card tier2" aria-expanded="true">
+                <div class="tier-heading">
+                    <h3>The LCD Method</h3>
+                    <button class="tier-toggle" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content">
+                    <p>Equations have an equal sign. We can eliminate fractions entirely!</p>
+                    <ol>
+                        <li>Factor all denominators to find the Least Common Denominator (LCD).</li>
+                        <li><strong>Note the domain constraints:</strong> \( x \) cannot equal any value that makes a
+                            denominator zero. These are extraneous solution traps!</li>
+                        <li>Multiply the ENTIRE equation (both sides, every single term) by the LCD. This will cancel
+                            every denominator.</li>
+                        <li>Solve the resulting polynomial equation (often linear or quadratic).</li>
+                        <li><strong>Check your answers!</strong> Discard any answers that violate the domain constraints
+                            from step 2 (Extraneous Solutions).</li>
+                    </ol>
+
+                    <details class="worked-example">
+                        <summary>Example: Solve \( \frac{3}{x-1} + \frac{1}{x} = \frac{7}{x(x-1)} \)</summary>
+                        <div class="example-content">
+                            <p><strong>Step 1 (LCD):</strong> Denominators are \( (x-1) \), \( x \), and \( x(x-1) \).
+                                LCD = \( x(x-1) \).</p>
+                            <p><strong>Step 2 (Restrictions):</strong> \( x \neq 0 \) and \( x \neq 1 \).</p>
+                            <p><strong>Step 3 (Multiply everything by LCD):</strong></p>
+                            <p>\( x(x-1) \cdot \frac{3}{x-1} + x(x-1) \cdot \frac{1}{x} = x(x-1) \cdot \frac{7}{x(x-1)}
+                                \)</p>
+                            <p>\( 3x + (x-1) = 7 \)</p>
+                            <p><strong>Step 4 (Solve):</strong> \( 3x + x - 1 = 7 \implies 4x = 8 \implies x = 2 \)</p>
+                            <p><strong>Step 5 (Check):</strong> Is \( x = 2 \) in our restriction list? No! So \( x = 2
+                                \) is <strong>valid</strong>. ✓</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- 8. Formative Check -->
+        <section>
+            <h2>8. Formative Check &amp; Practice <span class="badge mcap">MCAP Essential</span></h2>
+
+            <p><strong>Practice:</strong></p>
+            <ol>
+                <li>Simplify and state restrictions: \( \frac{x^2 - x - 12}{x^2 + 5x + 6} \)</li>
+                <li>Perform the operation: \( \frac{3}{x+2} + \frac{5}{x-1} \)</li>
+                <li>Find all asymptotes and holes for \( y = \frac{2x^2 - 8}{x^2 - 2x} \)</li>
+                <li>Describe the transformations to the parent graph \( \frac{1}{x} \) for the function \( y =
+                    \frac{-1}{x+3} - 4 \).</li>
+                <li>Solve for x: \( \frac{2}{x} + \frac{1}{2} = \frac{5}{x} \)</li>
+            </ol>
+
+            <details class="worked-example">
+                <summary>Solutions (Expand to check)</summary>
+                <div class="example-content">
+                    <p><strong>1. Simplify:</strong> Top is \( (x-4)(x+3) \), bottom is \( (x+2)(x+3) \). Cancel \(
+                        (x+3) \). Result: \( \frac{x-4}{x+2} \). Restrictions: \( x \neq -2, -3 \).</p>
+                    <p><strong>2. Addition:</strong> LCD is \( (x+2)(x-1) \). Top becomes \( 3(x-1) + 5(x+2) = 3x - 3 +
+                        5x + 10 = 8x + 7 \). Result: \( \frac{8x+7}{(x+2)(x-1)} \).</p>
+                    <p><strong>3. Features:</strong> Factor top \( 2(x-2)(x+2) \). Factor bottom \( x(x-2) \). The \(
+                        (x-2) \) cancels, so hole at \( x=2 \) (y-coord is \( \frac{2(4)}{2} = 4 \)). Remaining bottom
+                        is \( x \), so Vertical Asymptote at \( x=0 \). Degrees match (\( x^2 / x^2 \)), so Horizontal
+                        Asymptote is the ratio of coefficients: \( y = \frac{2}{1} = 2 \).</p>
+                    <p><strong>4. Transformations:</strong> Reflected across x-axis (due to negative), shifted Left 3
+                        units, shifted Down 4 units. VA is \( x=-3 \), HA is \( y=-4 \).</p>
+                    <p><strong>5. Solve:</strong> LCD is \( 2x \). Multiply all terms by \( 2x \):<br>
+                        \( (2x)\frac{2}{x} + (2x)\frac{1}{2} = (2x)\frac{5}{x} \)<br>
+                        \( 4 + x = 10 \implies x = 6 \). (Doesn't violate restriction \( x \neq 0 \), so valid answer).
+                    </p>
+                </div>
+            </details>
+
+            <!-- Mini Exit Ticket -->
+            <div class="interactive-tool" style="background: #fdf4ff; border-color: #f5d0fe;">
+                <h4 style="color: #a21caf;">Mini Exit Ticket</h4>
+                <p>When solving the equation \( \frac{x^2}{x-3} = \frac{9}{x-3} \), a student multiplies both sides by
+                    the denominator, gets \( x^2 = 9 \), and concludes the solutions are \( x = 3 \) and \( x = -3 \).
+                    Identify the error the student made and explain why one answer must be rejected.</p>
+                <p class="muted" style="margin-top: 12px; font-size: 0.9em;"><em>Hint: Look at the denominator of the
+                        original equation.</em></p>
+            </div>
+        </section>
+
+        <!-- Footer Nav -->
+        <div
+            style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between;">
+            <a href="Unit2_PartC_HigherPolynomials.html" class="btn">← Back to Part C</a>
+            <a href="Unit2_PartE_Review_MCAP.html" class="btn primary">Proceed to Part E: MCAP Review &amp; Strategy
+                →</a>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        document.querySelectorAll('.tier-toggle').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const article = btn.closest('.tier-card');
+                const expanded = article.getAttribute('aria-expanded') === 'true';
+                article.setAttribute('aria-expanded', String(!expanded));
+                btn.setAttribute('aria-expanded', String(!expanded));
+                btn.textContent = expanded ? 'Show' : 'Hide';
+            });
+        });
+    </script>
+</body>
+
+</html>
