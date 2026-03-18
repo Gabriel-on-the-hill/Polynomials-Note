@@ -452,6 +452,27 @@
                 <p>When solving \( x^2 = 16 \) by taking the square root of both sides, NEVER write just \( x = 4 \). It
                     MUST be \( x = \pm 4 \).</p>
             </div>
+
+            <div class="concept-box" style="background: #f0fdf4; border-color: #a7f3d0; color: #065f46;">
+                <h4>Trap #5: Confusing End Behavior with Zeros</h4>
+                <p>End behavior is determined ONLY by the <strong>leading term</strong>. Coefficients of lower-degree terms are irrelevant. Students often look at the constant or the sign of the last term instead.</p>
+            </div>
+
+            <div class="concept-box" style="background: #fef2f2; border-color: #fecaca; color: #991b1b;">
+                <h4>Trap #6: \( \sqrt{-a} \cdot \sqrt{-b} \neq \sqrt{ab} \)</h4>
+                <p><strong>Incorrect:</strong> \( \sqrt{-9} \cdot \sqrt{-4} = \sqrt{36} = 6 \)</p>
+                <p><strong>Correct:</strong> Convert to \( i \) first! \( 3i \cdot 2i = 6i^2 = -6 \)</p>
+            </div>
+
+            <div class="concept-box" style="background: #fffbeb; border-color: #fde68a; color: #b45309;">
+                <h4>Trap #7: Forgetting the GCF Before Factoring</h4>
+                <p>Always factor out the GCF first! \( 2x^2 + 6x + 4 \) should become \( 2(x^2 + 3x + 2) = 2(x+1)(x+2) \), not forced into the AC method raw.</p>
+            </div>
+
+            <div class="concept-box" style="background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a;">
+                <h4>Trap #8: HA Rule Confusion When Degrees Are Equal</h4>
+                <p>When the degree of the numerator equals the degree of the denominator, the HA is the <strong>ratio of leading coefficients</strong>, NOT "y = 1" or "no HA." For \( \frac{3x^2 + 1}{5x^2 - 2} \), the HA is \( y = \frac{3}{5} \).</p>
+            </div>
         </section>
 
         <!-- 4. Mixed Practice -->
@@ -462,50 +483,48 @@
                 have attempted every problem.</p>
 
             <ol>
-                <li><strong>(Quadratics)</strong> Solve for \( x \) by completing the square: \( -2x^2 + 12x - 14 = 0 \)
-                </li>
+                <li><strong>(Quadratics)</strong> Solve for \( x \) by completing the square: \( -2x^2 + 12x - 14 = 0 \)</li>
                 <li><strong>(Complex)</strong> Evaluate \( (3 - 5i)^2 \) and write in standard complex form.</li>
-                <li><strong>(Polynomials)</strong> Completely factor the cubic polynomial given that \( x = 2 \) is a
-                    known root: \( P(x) = x^3 - 7x^2 + 16x - 12 \)</li>
+                <li><strong>(Polynomials)</strong> Completely factor the cubic polynomial given that \( x = 2 \) is a known root: \( P(x) = x^3 - 7x^2 + 16x - 12 \)</li>
                 <li><strong>(Rationals)</strong> Add and simplify: \( \frac{x}{x-2} + \frac{4}{x+2} \)</li>
-                <li><strong>(Modeling)</strong> A rocket is launched. Its height \( h \) in feet after \( t \) seconds
-                    is given by \( h(t) = -16t^2 + 64t + 80 \). How many seconds until it hits the ground?</li>
+                <li><strong>(Modeling)</strong> A rocket is launched. Its height \( h \) in feet after \( t \) seconds is given by \( h(t) = -16t^2 + 64t + 80 \). How many seconds until it hits the ground?</li>
+                <li><strong>(Multi-Select)</strong> Which of the following are TRUE about \( f(x) = -2x^4 + 3x^2 - 1 \)? Select ALL.<br>
+                    A. The end behavior is "both ends DOWN"<br>
+                    B. The function is even<br>
+                    C. The degree is 4<br>
+                    D. The y-intercept is -1</li>
+                <li><strong>(Complex Division)</strong> Simplify \( \frac{4 + 3i}{2 - i} \) to standard form.</li>
+                <li><strong>(Rational Solve)</strong> Solve: \( \frac{5}{x-3} = \frac{2}{x-3} + 1 \). Check for extraneous solutions.</li>
+                <li><strong>(End Behavior + Zeros)</strong> For \( g(x) = (x+1)^2(x-3)(x+4) \):<br>
+                    a) State the degree and leading coefficient<br>
+                    b) Describe end behavior<br>
+                    c) List zeros and how the graph behaves at each</li>
+                <li><strong>(Discriminant)</strong> For what values of \( k \) does \( x^2 + kx + 9 = 0 \) have exactly one real root?</li>
+                <li><strong>(Cubes)</strong> Factor: \( x^6 - 64 \) (Hint: difference of squares first, then cubes)</li>
+                <li><strong>(Asymptotes)</strong> Find ALL features (VA, HA, holes, x-intercepts) of \( f(x) = \frac{x^2 - 4x + 3}{x^2 - 1} \)</li>
+                <li><strong>(Quadratic in Form)</strong> Solve: \( (x^2 + 1)^2 - 5(x^2 + 1) + 4 = 0 \)</li>
+                <li><strong>(Error Analysis)</strong> A student claims \( \frac{x^2 - 9}{x + 3} = x - 3 \) for all values of x. Is the student fully correct? Explain.</li>
+                <li><strong>(Systems)</strong> Solve the system: \( y = x^2 - 4x + 3 \) and \( y = -x + 3 \)</li>
             </ol>
 
             <details class="worked-example">
                 <summary>Step-by-step Solutions</summary>
                 <div class="example-content">
-                    <p><strong>1. Completing the Square:</strong><br>
-                        Divide all by -2: \( x^2 - 6x + 7 = 0 \)<br>
-                        Move constant: \( x^2 - 6x = -7 \)<br>
-                        Half of -6 is -3, squared is 9: \( x^2 - 6x + 9 = -7 + 9 \)<br>
-                        Factor: \( (x - 3)^2 = 2 \)<br>
-                        Root: \( x - 3 = \pm\sqrt{2} \implies x = 3 \pm \sqrt{2} \)</p>
-
-                    <p><strong>2. Complex Exponent:</strong><br>
-                        \( (3 - 5i)(3 - 5i) = 9 - 15i - 15i + 25i^2 \)<br>
-                        \( 9 - 30i + 25(-1) \)<br>
-                        \( 9 - 30i - 25 = -16 - 30i \)</p>
-
-                    <p><strong>3. Advanced Factoring:</strong><br>
-                        Since \( x=2 \) is a root, divide \( P(x) \) by \( (x-2) \) using division.<br>
-                        Quotient is \( x^2 - 5x + 6 \).<br>
-                        Factor the quotient: \( (x-2)(x-3) \).<br>
-                        Original polynomial factored entirely: \( (x-2)(x-2)(x-3) \) or \( (x-2)^2(x-3) \).</p>
-
-                    <p><strong>4. Rational Addition:</strong><br>
-                        LCD is \( (x-2)(x+2) \).<br>
-                        Top left: \( x(x+2) = x^2 + 2x \)<br>
-                        Top right: \( 4(x-2) = 4x - 8 \)<br>
-                        Combine over LCD: \( \frac{x^2 + 6x - 8}{x^2 - 4} \).</p>
-
-                    <p><strong>5. Rocket Modeling:</strong><br>
-                        Hits ground when \( h(t) = 0 \).<br>
-                        \( -16t^2 + 64t + 80 = 0 \)<br>
-                        Divide out GCF (-16): \( t^2 - 4t - 5 = 0 \)<br>
-                        Factor: \( (t - 5)(t + 1) = 0 \)<br>
-                        Solutions: \( t = 5, t = -1 \). Reject the negative time.<br>
-                        Answer: <strong>5 seconds</strong>.</p>
+                    <p><strong>1. Completing the Square:</strong> Divide by -2: \( x^2 - 6x + 7 = 0 \). CTS: \( (x-3)^2 = 2 \implies x = 3 \pm \sqrt{2} \).</p>
+                    <p><strong>2. Complex:</strong> \( (3-5i)^2 = 9 - 30i + 25i^2 = 9 - 30i - 25 = -16 - 30i \).</p>
+                    <p><strong>3. Factor:</strong> Divide by \( (x-2) \): quotient \( x^2 - 5x + 6 = (x-2)(x-3) \). Full: \( (x-2)^2(x-3) \).</p>
+                    <p><strong>4. Rational Add:</strong> LCD = \( (x-2)(x+2) \). \( \frac{x(x+2) + 4(x-2)}{(x-2)(x+2)} = \frac{x^2 + 6x - 8}{x^2 - 4} \).</p>
+                    <p><strong>5. Rocket:</strong> \( -16t^2 + 64t + 80 = 0 \implies t^2 - 4t - 5 = 0 \implies (t-5)(t+1) = 0 \). \( t = 5 \) seconds.</p>
+                    <p><strong>6.</strong> A: \( -2x^4 \) → even degree, negative coeff → both ends DOWN ✓. B: Check \( f(-x) = -2x^4 + 3x^2 - 1 = f(x) \) ✓ Even. C: Degree 4 ✓. D: \( f(0) = -1 \) ✓. <strong>All four (A, B, C, D).</strong></p>
+                    <p><strong>7.</strong> Multiply by conjugate \( \frac{2+i}{2+i} \): Top = \( (4+3i)(2+i) = 8+4i+6i+3i^2 = 5+10i \). Bottom = \( 4+1 = 5 \). Result: \( 1 + 2i \).</p>
+                    <p><strong>8.</strong> Multiply by \( (x-3) \): \( 5 = 2 + (x-3) \implies x = 6 \). Check: \( x = 6 \neq 3 \). Valid ✓.</p>
+                    <p><strong>9a.</strong> Degree = 2+1+1 = 4. Leading coeff = 1 (positive). <strong>9b.</strong> Even degree, positive coeff → both ends UP. <strong>9c.</strong> \( x = -1 \) (bounce, mult 2), \( x = 3 \) (cross, mult 1), \( x = -4 \) (cross, mult 1).</p>
+                    <p><strong>10.</strong> One real root means \( \Delta = 0 \). \( k^2 - 36 = 0 \implies k = \pm 6 \).</p>
+                    <p><strong>11.</strong> \( x^6 - 64 = (x^3)^2 - 8^2 = (x^3-8)(x^3+8) \). Then cubes: \( (x-2)(x^2+2x+4)(x+2)(x^2-2x+4) \).</p>
+                    <p><strong>12.</strong> Factor: \( \frac{(x-1)(x-3)}{(x-1)(x+1)} \). Cancel \( (x-1) \) → hole at \( x = 1 \). VA: \( x = -1 \). HA: \( y = 1 \). x-intercept: \( x = 3 \).</p>
+                    <p><strong>13.</strong> Let \( u = x^2+1 \): \( u^2-5u+4 = (u-4)(u-1) = 0 \). \( x^2+1 = 4 \implies x = \pm\sqrt{3} \). \( x^2+1 = 1 \implies x = 0 \). Solutions: \( \{0, \pm\sqrt{3}\} \).</p>
+                    <p><strong>14.</strong> Almost correct, but NOT for all x. When \( x = -3 \), the original is undefined (division by zero). The correct statement is: \( \frac{x^2-9}{x+3} = x - 3 \) <strong>for \( x \neq -3 \)</strong>.</p>
+                    <p><strong>15.</strong> Set equal: \( x^2-4x+3 = -x+3 \implies x^2-3x = 0 \implies x(x-3) = 0 \). \( x = 0 \implies y = 3 \). \( x = 3 \implies y = 0 \). Points: \( (0, 3) \) and \( (3, 0) \).</p>
                 </div>
             </details>
         </section>
