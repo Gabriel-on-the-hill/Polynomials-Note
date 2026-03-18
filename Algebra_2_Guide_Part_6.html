@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 6: Exponents & Logs (Refined)</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --text: #0f1724;
+            --muted: #6b7280;
+            --accent: #3b82f6;
+            --tier1: #e7f0ff;
+            --tier1-border: #3b5bdb;
+            --tier2: #f3f4f6;
+            --tier2-border: #475569;
+            --tier3: #fff9db;
+            --tier3-border: #f59e0b;
+            --spiral: #f3f0ff;
+            --spiral-border: #be4bdb;
+            --radius: 14px;
+            --shadow: 0 14px 48px rgba(2, 6, 23, 0.06);
+            --focus: #94a3b8;
+            --mono: "Source Code Pro", monospace;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 32px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 44px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* headings */
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 2rem;
+            font-weight: 800
+        }
+
+        header p.lead {
+            margin: 6px 0 0 0;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        /* small utilities */
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #eef2f6;
+            margin: 28px 0
+        }
+
+        blockquote {
+            background: #fff9db;
+            border-left: 6px solid var(--tier3-border);
+            padding: 16px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #374151;
+            margin: 18px 0
+        }
+
+        .spiral {
+            background: var(--spiral);
+            border-left: 4px solid var(--spiral-border);
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: .95rem;
+            color: #4b5563
+        }
+
+        /* tier cards */
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            border-left: 6px solid transparent
+        }
+
+        .tier1 {
+            background: var(--tier1);
+            border-color: var(--tier1-border)
+        }
+
+        .tier2 {
+            background: var(--tier2);
+            border-color: var(--tier2-border)
+        }
+
+        .tier3 {
+            background: var(--tier3);
+            border-color: var(--tier3-border)
+        }
+
+        .tier-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #374151;
+            font-weight: 700
+        }
+
+        .toggle-btn:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* hidden */
+        .tier-content[hidden] {
+            display: none
+        }
+
+        /* tables & code */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 18px 0
+        }
+
+        .formula-table th {
+            background: #fbfdff;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: .85rem;
+            color: #374151;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eef2f6
+        }
+
+        .formula-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: .95rem
+        }
+
+        code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: var(--mono);
+            color: #b91c1c
+        }
+
+        .identity-box {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: var(--mono)
+        }
+
+        /* inline form */
+        .inline-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .input-group label {
+            font-size: .85rem;
+            font-weight: 600;
+            color: #475569
+        }
+
+        .inline-form input[type="number"],
+        .inline-form input[type="text"],
+        .inline-form select {
+            width: 120px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit
+        }
+
+        .inline-form button {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 0;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .inline-form button.secondary {
+            background: #0f172a
+        }
+
+        /* details */
+        details {
+            margin-top: 8px
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        summary:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* responsive */
+        @media (max-width:720px) {
+            .container {
+                padding: 20px
+            }
+
+            header h1 {
+                font-size: 1.5rem
+            }
+
+            .inline-form input {
+                width: 86px
+            }
+        }
+
+        /* print */
+        @media print {
+
+            .toggle-btn,
+            .inline-form button {
+                display: none
+            }
+
+            body {
+                background: white
+            }
+
+            .container {
+                box-shadow: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <h1>Algebra 2 Excellence Bible — Part 6: Exponents & Logs (Refined)</h1>
+            <p class="lead">Core principle: A logarithm is an exponent written sideways — understand the inverse and the
+                constraints.</p>
+        </header>
+
+        <blockquote>Logs undo exponentials. Master the undoing, and you master growth & decay.</blockquote>
+
+        <hr class="sep" />
+
+        <!-- EXPONENT RULES -->
+        <section aria-labelledby="f16">
+            <h2 id="f16">F16 — Exponent Rules (Grammar of Growth)</h2>
+            <div class="spiral"><strong>Spiral link:</strong> PEMDAS & repeated multiplication. Exponents are shorthand
+                for multiplying the same factor.</div>
+
+            <article class="tier-card tier1" aria-labelledby="madspm">
+                <div class="tier-heading">
+                    <h3 id="madspm">Tier 1 — MADSPM (Concise rules)</h3>
+                    <button class="toggle-btn" aria-controls="madspm-content">Hide</button>
+                </div>
+                <div class="tier-content" id="madspm-content">
+                    <ul>
+                        <li><strong>Multiply bases:</strong> add exponents: <code>x²·x³=x⁵</code></li>
+                        <li><strong>Divide bases:</strong> subtract exponents: <code>x⁵/x²=x³</code></li>
+                        <li><strong>Power to a power:</strong> multiply exponents: <code>(x²)³=x⁶</code></li>
+                    </ul>
+                    <p class="note">Always check bases are the same before applying these rules.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="neg-frac">
+                <div class="tier-heading">
+                    <h3 id="neg-frac">Tier 2 — Negative & Fractional Exponents</h3>
+                    <button class="toggle-btn" aria-controls="neg-frac-content">Show</button>
+                </div>
+                <div class="tier-content" id="neg-frac-content" hidden>
+                    <p><strong>Negative exponents:</strong> flip the base: <code>x⁻² = 1 / x²</code>.</p>
+                    <p><strong>Fractional exponents:</strong> denominator = root, numerator = power.</p>
+                    <div class="identity-box">
+                        <code>x^(m/n) = (x^(1/n))^m = (ⁿ√x)^m = ⁿ√(x^m)</code>
+                    </div>
+                    <p><strong>Important:</strong> If n is even, the real root requires x ≥ 0. For negative x and even
+                        roots, the result is complex.</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- LOGS DEFINITION -->
+        <section aria-labelledby="f17">
+            <h2 id="f17">F17 — Definition & Basic Constraints</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Inverse functions — logs undo exponentials; domain & base
+                matter.</div>
+
+            <article class="tier-card tier1" aria-labelledby="hook">
+                <div class="tier-heading">
+                    <h3 id="hook">Tier 1 — The Hook (Definition)</h3>
+                    <button class="toggle-btn" aria-controls="hook-content">Hide</button>
+                </div>
+                <div class="tier-content" id="hook-content">
+                    <p><strong>Definition:</strong> <code>y = log_b(x)</code> ⇔ <code>b^y = x</code>.</p>
+                    <p><strong>Domain & base rules:</strong> argument <code>x</code> must be <strong>positive</strong>
+                        (x&gt;0). Base <code>b</code> must satisfy <strong>b&gt;0</strong> and <strong>b≠1</strong>.</p>
+                    <p><strong>Key caution:</strong> log rules (product/quotient/power) apply only when you are
+                        manipulating logs of the <em>same base</em>. You cannot do algebra across different bases
+                        without converting.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="common-logs">
+                <div class="tier-heading">
+                    <h3 id="common-logs">Tier 2 — Common & Natural Logs</h3>
+                    <button class="toggle-btn" aria-controls="common-logs-content">Show</button>
+                </div>
+                <div class="tier-content" id="common-logs-content" hidden>
+                    <ul>
+                        <li><strong>log(x)</strong> usually means base 10 in many contexts (common log).</li>
+                        <li><strong>ln(x)</strong> means base e (natural log), where e ≈ 2.7182818. Used for continuous
+                            growth/decay and calculus.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- PROPERTIES -->
+        <section aria-labelledby="f18">
+            <h2 id="f18">F18 — Log Properties (Expand & Condense)</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Exponent rules — logs behave like exponents because they
+                are exponents.</div>
+
+            <article class="tier-card tier1" aria-labelledby="props">
+                <div class="tier-heading">
+                    <h3 id="props">Tier 1 — The Three Core Laws</h3>
+                    <button class="toggle-btn" aria-controls="props-content">Hide</button>
+                </div>
+                <div class="tier-content" id="props-content">
+                    <table class="formula-table" aria-label="Log properties">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Property</th>
+                                <th>Why (exponent view)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product</td>
+                                <td><code>log_b(AB)=log_b(A)+log_b(B)</code></td>
+                                <td>Because b^{u+v}=b^u·b^v</td>
+                            </tr>
+                            <tr>
+                                <td>Quotient</td>
+                                <td><code>log_b(A/B)=log_b(A)-log_b(B)</code></td>
+                                <td>Because b^{u-v}=b^u/b^v</td>
+                            </tr>
+                            <tr>
+                                <td>Power</td>
+                                <td><code>log_b(A^k)=k·log_b(A)</code></td>
+                                <td>Bring exponent down</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="note">Common trap: <code>log(a + b) ≠ log a + log b</code>. The properties only work for
+                        multiplication/division/powers.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-labelledby="change-base">
+                <div class="tier-heading">
+                    <h3 id="change-base">Tier 3 — Change of Base</h3>
+                    <button class="toggle-btn" aria-controls="change-base-content">Show</button>
+                </div>
+                <div class="tier-content" id="change-base-content" hidden>
+                    <p>If you only have natural or common logs available:</p>
+                    <div class="identity-box"><code>log_b(x) = ln(x) / ln(b) = log(x) / log(b)</code></div>
+                    <p>Use this to convert between bases before applying rules.</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- INTERACTIVE CONVERTERS & SOLVERS -->
+        <section aria-labelledby="tools">
+            <h2 id="tools">Interactive Tools — Practice the conversions</h2>
+
+            <article class="tier-card tier1" aria-labelledby="tool-log">
+                <div class="tier-heading">
+                    <h3 id="tool-log">Log converter — compute log_b(x)</h3>
+                    <button class="toggle-btn" aria-controls="tool-log-content">Hide</button>
+                </div>
+
+                <div class="tier-content" id="tool-log-content">
+                    <div
+                        style="margin-top:8px; padding:14px; border-radius:8px; background:#fbfdff; border:1px solid #eef6ff">
+                        <div class="inline-form" aria-label="Log converter">
+                            <div class="input-group"><label for="base-val">Base (b)</label><input id="base-val"
+                                    type="number" value="2" step="any" /></div>
+                            <div class="input-group"><label for="arg-val">Argument (x)</label><input id="arg-val"
+                                    type="number" value="8" step="any" /></div>
+                            <div class="input-group"><label for="log-precision">Precision</label>
+                                <select id="log-precision">
+                                    <option value="3">3 dp</option>
+                                    <option value="4">4 dp</option>
+                                    <option value="2">2 dp</option>
+                                </select>
+                            </div>
+                            <button id="calcLogBtn">Compute</button>
+                        </div>
+                        <div id="logResult"
+                            style="margin-top:12px;font-family:var(--mono);font-weight:700;color:var(--accent)">Result
+                            will appear here</div>
+                        <div class="note" style="margin-top:8px">Validation: base &gt; 0, base ≠ 1, argument &gt; 0.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="tool-exp">
+                <div class="tier-heading">
+                    <h3 id="tool-exp">Exponential solver — compute b^y and solve b^x = y</h3>
+                    <button class="toggle-btn" aria-controls="tool-exp-content">Show</button>
+                </div>
+
+                <div class="tier-content" id="tool-exp-content" hidden>
+                    <div
+                        style="margin-top:8px;padding:14px;border-radius:8px;background:#f8fafc;border:1px solid #eef2fb">
+                        <div class="inline-form" aria-label="Exponential tools">
+                            <div class="input-group"><label for="exp-base">Base (b)</label><input id="exp-base"
+                                    type="number" value="2" step="any" /></div>
+                            <div class="input-group"><label for="exp-y">Exponent or y</label><input id="exp-y"
+                                    type="number" value="10" step="any" /></div>
+                            <div class="input-group">
+                                <label for="exp-mode">Mode</label>
+                                <select id="exp-mode">
+                                    <option value="compute">Compute b^y</option>
+                                    <option value="solve">Solve b^x = y (find x)</option>
+                                </select>
+                            </div>
+                            <button id="expBtn">Go</button>
+                        </div>
+                        <div id="expResult"
+                            style="margin-top:12px;font-family:var(--mono);font-weight:700;color:var(--accent)">Result
+                            will appear here</div>
+                        <div class="note" style="margin-top:8px">When solving for x, result = ln(y) / ln(b). Remember
+                            domain: y&gt;0 and b&gt;0, b≠1.</div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- PRACTICE & PITFALLS -->
+        <section aria-labelledby="practice">
+            <h2 id="practice">Practice, Pitfalls & Worked Examples</h2>
+
+            <article class="tier-card tier1" aria-labelledby="practice-q">
+                <div class="tier-heading">
+                    <h3 id="practice-q">Tier 1 — Quick Practice</h3>
+                    <button class="toggle-btn" aria-controls="practice-content">Hide</button>
+                </div>
+                <div class="tier-content" id="practice-content">
+                    <ul>
+                        <li>Expand: <code>log(x^2 y / z)</code> → <code>2 log x + log y − log z</code>.</li>
+                        <li>Condense: <code>ln 5 + ln 2</code> → <code>ln 10</code>.</li>
+                        <li>Solve: <code>e^(2x)=7</code> → <code>x = (1/2) ln 7</code>.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-labelledby="pitfalls-list">
+                <div class="tier-heading">
+                    <h3 id="pitfalls-list">Tier 3 — Common Pitfalls</h3>
+                    <button class="toggle-btn" aria-controls="pitfalls-content">Show</button>
+                </div>
+                <div class="tier-content" id="pitfalls-content" hidden>
+                    <ul>
+                        <li>Applying log rules across different bases without converting.</li>
+                        <li>Attempting to take even root of negative number (real vs complex).</li>
+                        <li>Forgetting base constraints: base cannot be 1 or negative, argument must be positive.</li>
+                        <li>Assuming <code>log(a+b)=log a + log b</code> — false.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="worked">
+                <div class="tier-heading">
+                    <h3 id="worked">Worked Example — Solve</h3>
+                    <button class="toggle-btn" aria-controls="worked-content">Show</button>
+                </div>
+                <div class="tier-content" id="worked-content" hidden>
+                    <p><strong>Example:</strong> Solve <code>5^(x − 2) = 25</code>.</p>
+                    <ol>
+                        <li>Recognize 25 = 5².</li>
+                        <li>So <code>5^(x − 2) = 5²</code> → equate exponents: <code>x − 2 = 2</code>.</li>
+                        <li>Therefore <code>x = 4</code>.</li>
+                    </ol>
+
+                    <p><strong>Example (log eq):</strong> Solve <code>log_3(x) = 4</code>.</p>
+                    <ol>
+                        <li>Rewrite: <code>3^4 = x</code>.</li>
+                        <li><code>x = 81</code>.</li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="next">
+            <h2 id="next">Next Steps</h2>
+            <ul>
+                <li>Practice converting exponentials ↔ logs until it becomes reflexive.</li>
+                <li>Identify domain issues before solving — quick checklist: (b&gt;0, b≠1; x&gt;0 for log(x)).</li>
+                <li>Try 10 mixed problems: expand, condense, and solve (exponent & log varieties).</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        (function () {
+            // Initialize toggles: set aria-expanded and button label according to content hidden state
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                const ctrl = btn.getAttribute('aria-controls');
+                const content = document.getElementById(ctrl);
+                if (!content) return;
+                const initHidden = content.hasAttribute('hidden');
+                btn.setAttribute('aria-expanded', String(!initHidden));
+                btn.textContent = initHidden ? 'Show' : 'Hide';
+                btn.addEventListener('click', () => {
+                    const nowHidden = content.hasAttribute('hidden');
+                    if (nowHidden) content.removeAttribute('hidden');
+                    else content.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', String(nowHidden));
+                    btn.textContent = nowHidden ? 'Hide' : 'Show';
+                    btn.focus();
+                });
+            });
+
+            // Log converter
+            const baseInput = document.getElementById('base-val');
+            const argInput = document.getElementById('arg-val');
+            const precSelect = document.getElementById('log-precision');
+            const calcLogBtn = document.getElementById('calcLogBtn');
+            const logResult = document.getElementById('logResult');
+
+            function formatNumber(n, dp) { return Number.isFinite(n) ? n.toFixed(dp) : 'NaN'; }
+
+            if (calcLogBtn) {
+                calcLogBtn.addEventListener('click', () => {
+                    const b = parseFloat(baseInput.value);
+                    const x = parseFloat(argInput.value);
+                    const dp = parseInt(precSelect.value, 10);
+                    if (Number.isNaN(b) || Number.isNaN(x)) {
+                        logResult.textContent = 'Enter numeric base and argument.';
+                        logResult.style.color = '#ef4444'; return;
+                    }
+                    if (b <= 0 || b === 1 || x <= 0) {
+                        logResult.innerHTML = 'Invalid: require base > 0 and ≠ 1; argument > 0.';
+                        logResult.style.color = '#ef4444'; return;
+                    }
+                    const y = Math.log(x) / Math.log(b);
+                    logResult.innerHTML = `log<sub>${b}</sub>(${x}) ≈ <strong>${formatNumber(y, dp)}</strong>`;
+                    logResult.style.color = 'var(--accent)';
+                });
+            }
+
+            // Exponential solver
+            const expBase = document.getElementById('exp-base');
+            const expY = document.getElementById('exp-y');
+            const expMode = document.getElementById('exp-mode');
+            const expBtn = document.getElementById('expBtn');
+            const expResult = document.getElementById('expResult');
+
+            if (expBtn) {
+                expBtn.addEventListener('click', () => {
+                    const b = parseFloat(expBase.value);
+                    const y = parseFloat(expY.value);
+                    const mode = expMode.value;
+                    if (Number.isNaN(b) || Number.isNaN(y)) {
+                        expResult.textContent = 'Enter numeric values.'; expResult.style.color = '#ef4444'; return;
+                    }
+                    if (mode === 'compute') {
+                        // compute b^y
+                        const val = Math.pow(b, y);
+                        expResult.textContent = `${b}^${y} = ${Number.isFinite(val) ? val : 'Overflow/NaN'}`;
+                        expResult.style.color = 'var(--accent)';
+                    } else {
+                        // solve b^x = y => x = ln(y)/ln(b)
+                        if (b <= 0 || b === 1 || y <= 0) {
+                            expResult.textContent = 'Invalid: require base >0 and ≠1; y>0 to solve for real x.'; expResult.style.color = '#ef4444'; return;
+                        }
+                        const x = Math.log(y) / Math.log(b);
+                        expResult.textContent = `Solution: x = ln(${y}) / ln(${b}) ≈ ${x.toFixed(6)}`;
+                        expResult.style.color = 'var(--accent)';
+                    }
+                });
+            }
+
+            // Keyboard-accessible: Enter triggers for inputs when focused on buttons is default behavior.
+
+        })();
+    </script>
+</body>
+
+</html>

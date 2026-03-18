@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 2: Polynomials &amp; Factoring</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --muted: #6b7280;
+            --text: #111827;
+            --accent-1: #3b5bdb;
+            /* Tier 1 */
+            --accent-2: #495057;
+            /* Tier 2 */
+            --accent-3: #fab005;
+            /* Tier 3 */
+            --radius: 12px;
+            --shadow: 0 8px 40px rgba(2, 6, 23, 0.08);
+            --container-max: 960px;
+        }
+
+        /* Base */
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding: 28px;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 44px;
+            box-shadow: var(--shadow);
+        }
+
+        header>h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        header p.lead {
+            margin: 8px 0 0 0;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #e6e9ee;
+            margin: 28px 0;
+        }
+
+        /* Headings */
+        h2 {
+            font-size: 1.25rem;
+            margin: 22px 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f2f6;
+        }
+
+        h3 {
+            font-size: 1rem;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+
+        /* Blockquote */
+        blockquote {
+            margin: 18px 0;
+            padding: 18px 20px;
+            background: #fff9db;
+            border-left: 6px solid var(--accent-3);
+            border-radius: 8px;
+            color: #4b5563;
+            font-style: italic;
+        }
+
+        /* Diagnostic table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 8px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eef2f6;
+        }
+
+        caption {
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        thead th {
+            text-align: left;
+            font-size: 0.78rem;
+            padding: 12px 16px;
+            background: #fbfdff;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        tbody td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Tier cards (collapsible) */
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0 18px 0;
+        }
+
+        .btn {
+            background: #fff;
+            border: 1px solid #e6e9ee;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .btn.small {
+            padding: 6px 8px;
+            font-size: 0.9rem;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            border-left: 6px solid transparent;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+        }
+
+        .tier-card[aria-expanded="false"] .tier-content {
+            display: none;
+        }
+
+        .tier1 {
+            border-left-color: var(--accent-1);
+        }
+
+        .tier2 {
+            border-left-color: var(--accent-2);
+        }
+
+        .tier3 {
+            border-left-color: var(--accent-3);
+        }
+
+        .tier-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .tier-toggle {
+            background: transparent;
+            border: 0;
+            color: var(--muted);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Lists & code */
+        ol,
+        ul {
+            margin: 0 0 12px 18px;
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.95rem;
+            color: #b91c1c;
+        }
+
+        /* Utility */
+        .muted {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .note {
+            font-size: 0.95rem;
+            color: #374151;
+        }
+
+        /* Responsive */
+        @media (max-width:640px) {
+            .container {
+                padding: 22px;
+            }
+
+            header>h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Print-friendly */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 18px;
+            }
+
+            .tier-toggle,
+            .btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <h1>Algebra 2 Excellence Bible — Part 2: Polynomials &amp; Factoring</h1>
+            <p class="lead">Polynomials are layered structure. Teach one layer at a time and Tracy will learn to peel
+                them.</p>
+        </header>
+
+        <blockquote>Complexity is just layers of simplicity wrapped together. Peel them back one by one.</blockquote>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="diagnostic">
+            <h2 id="diagnostic">Diagnostic Gateway</h2>
+
+            <p class="muted">Quick checks to route students to the correct foundation module.</p>
+
+            <table aria-describedby="diag-desc">
+                <caption id="diag-desc">Three quick entry checks before starting Polynomials &amp; Factoring</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Test Question</th>
+                        <th scope="col">Pass Criteria</th>
+                        <th scope="col">If Fail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Expansion</td>
+                        <td><code>(x + 3)(x - 4)</code></td>
+                        <td>Produces <code>x² - x - 12</code> with correct signs</td>
+                        <td>Foundation F4</td>
+                    </tr>
+                    <tr>
+                        <td>Factoring</td>
+                        <td>Compare <code>x² - 9</code> vs <code>x² - 3x</code></td>
+                        <td>Distinguishes difference-of-squares vs. common-factor form</td>
+                        <td>Foundation F5</td>
+                    </tr>
+                    <tr>
+                        <td>Graphing</td>
+                        <td><code>y = -x(x - 2)²</code></td>
+                        <td>Recognizes end behavior and multiplicity at x = 2</td>
+                        <td>Foundation F6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="foundation-f4">
+            <h2 id="foundation-f4">Foundation F4 — Operations (The Box)</h2>
+
+            <div class="controls">
+                <button class="btn small" data-action="expand-all" type="button">Expand all</button>
+                <button class="btn small" data-action="collapse-all" type="button">Collapse all</button>
+            </div>
+
+            <!-- Tier 1 -->
+            <article class="tier-card tier1" aria-expanded="true" id="f4-tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — Quick Reference</h3>
+                    <button class="tier-toggle" aria-controls="f4-tier1-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="f4-tier1-content">
+                    <p><strong>Stop FOILing. Start Boxing.</strong></p>
+                    <ol>
+                        <li>Draw a grid (2×2 for binomial×binomial; expand to 2×3 for degree 2 × degree 1).</li>
+                        <li>Write the terms on the outside. Keep negative signs attached to the term.</li>
+                        <li>Multiply term-by-term into each cell.</li>
+                        <li>Combine like terms and write in standard form (highest degree first).</li>
+                    </ol>
+
+                    <p class="note"><strong>Tip:</strong> Use the box method for larger products to prevent missing
+                        terms or sign errors.</p>
+                </div>
+            </article>
+
+            <!-- Tier 2 -->
+            <article class="tier-card tier2" aria-expanded="false" id="f4-tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Deep Mastery</h3>
+                    <button class="tier-toggle" aria-controls="f4-tier2-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f4-tier2-content">
+                    <p><strong>Conservation of Degree:</strong> Multiplying a degree-2 polynomial by a degree-1
+                        polynomial yields degree 3 unless coefficients cancel.</p>
+                    <p><strong>Standard Form:</strong> Arrange polynomial terms from highest to lowest power; constant
+                        term last.</p>
+                </div>
+            </article>
+
+            <!-- Tier 3 -->
+            <article class="tier-card tier3" aria-expanded="false" id="f4-tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Tutor Notes</h3>
+                    <button class="tier-toggle" aria-controls="f4-tier3-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f4-tier3-content">
+                    <p>Force the box method for anything larger than binomial×binomial. If a sign is missed inside the
+                        box, the final polynomial will be wrong — check boxes before combining.</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="foundation-f5">
+            <h2 id="foundation-f5">Foundation F5 — The Factoring Factory</h2>
+
+            <article class="tier-card tier1" aria-expanded="true" id="f5-tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — Quick Reference (Flowchart)</h3>
+                    <button class="tier-toggle" aria-controls="f5-tier1-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="f5-tier1-content">
+                    <ol>
+                        <li><strong>GCF first.</strong> Always check for a common factor.</li>
+                        <li><strong>Count terms:</strong>
+                            <ul>
+                                <li><em>2 terms</em> — Difference of squares? (a² − b² = (a−b)(a+b)).</li>
+                                <li><em>3 terms</em> — Trinomial: find two numbers that add to the middle term and
+                                    multiply to the constant (or use slide/divide if a &gt; 1).</li>
+                                <li><em>4 terms</em> — Try grouping.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false" id="f5-tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Deep Mastery</h3>
+                    <button class="tier-toggle" aria-controls="f5-tier2-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f5-tier2-content">
+                    <p>Factoring is the inverse of multiplication — think of it as division. Roots, zeros, x-intercepts
+                        and solutions are interchangeable terms: they all identify the x-values where the polynomial
+                        evaluates to zero.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-expanded="false" id="f5-tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Tutor Notes</h3>
+                    <button class="tier-toggle" aria-controls="f5-tier3-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f5-tier3-content">
+                    <p>If the student pauses, ask: “How many terms?” That triggers the decision flow. Remind them to
+                        <em>factor completely</em> — e.g., (x² − 4) → (x − 2)(x + 2).</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="foundation-f6">
+            <h2 id="foundation-f6">Foundation F6 — Graphing &amp; Behavior</h2>
+
+            <article class="tier-card tier1" aria-expanded="true" id="f6-tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — Quick Reference</h3>
+                    <button class="tier-toggle" aria-controls="f6-tier1-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="f6-tier1-content">
+                    <ul>
+                        <li><strong>End behavior:</strong> Determined by leading coefficient &amp; degree.
+                            <ul>
+                                <li>Odd degree: ends in opposite directions.</li>
+                                <li>Even degree: ends in same direction.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Multiplicity of zeros:</strong>
+                            <ul>
+                                <li>Multiplicity 1 — graph crosses (cut)</li>
+                                <li>Multiplicity 2 — graph touches and turns (bounce)</li>
+                                <li>Multiplicity 3 — flatten &amp; cross (jog)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-expanded="false" id="f6-tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Deep Mastery</h3>
+                    <button class="tier-toggle" aria-controls="f6-tier2-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f6-tier2-content">
+                    <p>The Zero Product Property: if a product equals zero, at least one factor must be zero — use this
+                        to identify x-values that make the polynomial zero.</p>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-expanded="false" id="f6-tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Tutor Notes</h3>
+                    <button class="tier-toggle" aria-controls="f6-tier3-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="f6-tier3-content">
+                    <p>For this course, focus on shape &amp; key intercepts. Save precise turning-point computation for
+                        calculus. Encourage sketching before plotting.</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="next-steps">
+            <h2 id="next-steps">Next Steps</h2>
+
+            <ul>
+                <li><strong>Drill:</strong> 10 factoring problems (GCF, difference of squares, trinomials).</li>
+                <li><strong>Task:</strong> Sketch 5 polynomials in factored form; annotate end behavior and
+                    multiplicity.</li>
+                <li><strong>Video:</strong> Record a 60-second explanation of factoring <code>2x³ - 18x</code> (explain
+                    GCF then factoring by grouping).</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Collapse/Expand behavior for each tier card
+        (function () {
+            const toggleButtons = document.querySelectorAll('.tier-toggle');
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const article = btn.closest('.tier-card');
+                    const expanded = article.getAttribute('aria-expanded') === 'true';
+                    article.setAttribute('aria-expanded', String(!expanded));
+                    btn.setAttribute('aria-expanded', String(!expanded));
+                    btn.textContent = expanded ? 'Show' : 'Hide';
+                });
+            });
+
+            // Expand/collapse all controls
+            const expandAllBtn = document.querySelector('[data-action="expand-all"]');
+            const collapseAllBtn = document.querySelector('[data-action="collapse-all"]');
+
+            function setAll(expand) {
+                document.querySelectorAll('.tier-card').forEach(card => {
+                    card.setAttribute('aria-expanded', String(expand));
+                    const btn = card.querySelector('.tier-toggle');
+                    if (btn) {
+                        btn.setAttribute('aria-expanded', String(expand));
+                        btn.textContent = expand ? 'Hide' : 'Show';
+                    }
+                });
+            }
+
+            if (expandAllBtn) expandAllBtn.addEventListener('click', () => setAll(true));
+            if (collapseAllBtn) collapseAllBtn.addEventListener('click', () => setAll(false));
+
+            // Keyboard accessibility: toggle with Enter/Space when focused
+            document.addEventListener('keydown', (e) => {
+                const active = document.activeElement;
+                if (active && active.classList.contains('tier-toggle') && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
+                    active.click();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

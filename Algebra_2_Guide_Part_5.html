@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 5: Statistics (Elevated)</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --text: #0f1724;
+            --muted: #6b7280;
+            --accent: #3b82f6;
+            --tier1: #e7f0ff;
+            --tier1-border: #3b5bdb;
+            --tier2: #f3f4f6;
+            --tier2-border: #475569;
+            --tier3: #fff9db;
+            --tier3-border: #f59e0b;
+            --spiral: #f3f0ff;
+            --spiral-border: #be4bdb;
+            --radius: 14px;
+            --shadow: 0 14px 48px rgba(2, 6, 23, 0.06);
+            --focus: #94a3b8;
+            --mono: "Source Code Pro", monospace;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 32px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 44px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Headings */
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 2rem;
+            font-weight: 800
+        }
+
+        header p.lead {
+            margin: 6px 0 0 0;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        /* separators */
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #eef2f6;
+            margin: 28px 0
+        }
+
+        /* blockquote */
+        blockquote {
+            background: #fff9db;
+            border-left: 6px solid var(--tier3-border);
+            padding: 16px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #374151;
+            margin: 18px 0
+        }
+
+        /* spiral */
+        .spiral {
+            background: var(--spiral);
+            border-left: 4px solid var(--spiral-border);
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: .95rem;
+            color: #4b5563
+        }
+
+        /* tier cards */
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            border-left: 6px solid transparent
+        }
+
+        .tier1 {
+            background: var(--tier1);
+            border-color: var(--tier1-border)
+        }
+
+        .tier2 {
+            background: var(--tier2);
+            border-color: var(--tier2-border)
+        }
+
+        .tier3 {
+            background: var(--tier3);
+            border-color: var(--tier3-border)
+        }
+
+        .tier-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #374151;
+            font-weight: 700
+        }
+
+        .toggle-btn:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* hidden */
+        .tier-content[hidden] {
+            display: none
+        }
+
+        /* tables and code */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 18px 0
+        }
+
+        .formula-table th {
+            background: #fbfdff;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: .85rem;
+            color: #374151;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eef2f6
+        }
+
+        .formula-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: .95rem
+        }
+
+        code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: var(--mono);
+            color: #b91c1c
+        }
+
+        /* identity box */
+        .identity-box {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: var(--mono)
+        }
+
+        /* small interactive form */
+        .inline-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .input-group label {
+            font-size: .85rem;
+            font-weight: 600;
+            color: #475569
+        }
+
+        .inline-form input[type="number"],
+        .inline-form input[type="text"] {
+            width: 110px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit
+        }
+
+        .inline-form select {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1
+        }
+
+        .inline-form button {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 0;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .inline-form button.secondary {
+            background: #0f172a
+        }
+
+        /* details */
+        details {
+            margin-top: 8px
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        summary:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* responsive */
+        @media (max-width:720px) {
+            .container {
+                padding: 20px
+            }
+
+            header h1 {
+                font-size: 1.5rem
+            }
+
+            .inline-form input {
+                width: 80px
+            }
+        }
+
+        /* print */
+        @media print {
+
+            .toggle-btn,
+            .inline-form button {
+                display: none
+            }
+
+            body {
+                background: white
+            }
+
+            .container {
+                box-shadow: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <h1>Algebra 2 Excellence Bible — Part 5: Statistics (Elevated)</h1>
+            <p class="lead">Core principle: statistics quantifies uncertainty — description first, inference next.</p>
+        </header>
+
+        <blockquote>Statistics doesn't remove ambiguity — it measures and explains it.</blockquote>
+
+        <hr class="sep" />
+
+        <!-- OVERVIEW -->
+        <section aria-labelledby="overview">
+            <h2 id="overview">Overview — Descriptive vs Inferential</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Algebra & Geometry (averages, area, ratio). Start here:
+                description (what data says), then inference (what sample says about population).</div>
+
+            <div class="tier-card tier1" aria-labelledby="desc-quick">
+                <div class="tier-heading">
+                    <h3 id="desc-quick">Tier 1 — Quick Reference (Key Definitions)</h3>
+                    <button class="toggle-btn" aria-controls="desc-quick-content" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content" id="desc-quick-content">
+                    <ul>
+                        <li><strong>Population</strong> — every unit you care about.</li>
+                        <li><strong>Sample</strong> — the subset you actually measure.</li>
+                        <li><strong>Parameter</strong> — number describing population (μ, σ).</li>
+                        <li><strong>Statistic</strong> — number computed from sample (x̄, s).</li>
+                        <li><strong>Descriptive</strong> — summarize data (mean, median, IQR, SD).</li>
+                        <li><strong>Inferential</strong> — use sample to estimate population (CI, hypothesis test).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- DESCRIPTIVE -->
+        <section aria-labelledby="descriptive">
+            <h2 id="descriptive">Descriptive Statistics — Center & Spread</h2>
+
+            <div class="tier-card tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — Essentials</h3>
+                    <button class="toggle-btn" aria-controls="desc-ess-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="desc-ess-content">
+                    <p><strong>Mean (x̄)</strong>: arithmetic average. Sensitive to outliers.</p>
+                    <p><strong>Median</strong>: middle value. Robust to outliers.</p>
+                    <p><strong>Mode</strong>: most frequent value (useful for categorical).</p>
+                    <p><strong>Variance / SD</strong>: average squared deviation; SD = √variance.</p>
+                    <p><strong>IQR</strong>: Q3 − Q1. Use IQR for skewed data.</p>
+                </div>
+            </div>
+
+            <div class="tier-card tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Quick Formulas</h3>
+                    <button class="toggle-btn" aria-controls="desc-formulas-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="desc-formulas-content" hidden>
+                    <table class="formula-table" aria-label="Descriptive formulas">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Formula</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mean</td>
+                                <td><code>x̄ = (Σx) / n</code></td>
+                                <td>Use for symmetric distributions</td>
+                            </tr>
+                            <tr>
+                                <td>Sample variance</td>
+                                <td><code>s² = Σ(x − x̄)² / (n − 1)</code></td>
+                                <td>Unbiased estimator</td>
+                            </tr>
+                            <tr>
+                                <td>Standard deviation</td>
+                                <td><code>s = √(s²)</code></td>
+                                <td>Same units as data</td>
+                            </tr>
+                            <tr>
+                                <td>Standard error</td>
+                                <td><code>SE = s / √n</code></td>
+                                <td>Estimating variability of x̄</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Robustness & Outliers</h3>
+                    <button class="toggle-btn" aria-controls="desc-robust" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="desc-robust" hidden>
+                    <p>When distribution is skewed, prefer median and IQR. For heavy tails, consider trimming or
+                        winsorizing. Always show both center and spread.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- NORMAL & Z -->
+        <section aria-labelledby="normal">
+            <h2 id="normal">The Normal Distribution & Z-Scores</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Central Limit Theorem — sample means tend toward Normal as
+                n grows.</div>
+
+            <div class="tier-card tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — 68-95-99.7 Rule</h3>
+                    <button class="toggle-btn" aria-controls="emp-content" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content" id="emp-content">
+                    <p>Approximately 68% of observations lie within ±1σ, 95% within ±2σ, 99.7% within ±3σ.</p>
+                </div>
+            </div>
+
+            <div class="tier-card tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Z-Score & P-value Calculator</h3>
+                    <button class="toggle-btn" aria-controls="z-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="z-content" hidden>
+                    <p><strong>z = (x − μ) / σ</strong> converts raw scores into standard units.</p>
+
+                    <div
+                        style="margin-top:12px; padding:14px; border-radius:8px; background:#f8fafc; border:1px solid #e6eef8">
+                        <div class="inline-form" role="form" aria-label="Z to P calculator">
+                            <div class="input-group"><label for="z-x">x</label><input id="z-x" type="number"
+                                    value="92" /></div>
+                            <div class="input-group"><label for="z-mu">μ</label><input id="z-mu" type="number"
+                                    value="80" /></div>
+                            <div class="input-group"><label for="z-sigma">σ</label><input id="z-sigma" type="number"
+                                    value="6" /></div>
+                            <div class="input-group"><label for="z-tail">Tail</label>
+                                <select id="z-tail">
+                                    <option value="left">Left</option>
+                                    <option value="right">Right</option>
+                                    <option value="two">Two-tailed</option>
+                                </select>
+                            </div>
+                            <button id="zCalcBtn">Compute</button>
+                        </div>
+
+                        <div id="zOutput"
+                            style="margin-top:12px;font-family:var(--mono);font-weight:700;color:var(--accent)">Result
+                            will appear here</div>
+                        <div class="note" style="margin-top:8px">Uses Normal CDF approximation (sufficient for classroom
+                            inference).</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Central Limit Theorem (Short)</h3>
+                    <button class="toggle-btn" aria-controls="clt-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="clt-content" hidden>
+                    <p>For independent samples with finite variance, the distribution of the sample mean approaches
+                        Normal as n increases (n ≥ ~30 is common rule-of-thumb).</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- CONFIDENCE INTERVAL -->
+        <section aria-labelledby="ci">
+            <h2 id="ci">Confidence Intervals & Margin of Error</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Literal Equations — rearrange formula for unknowns.</div>
+
+            <div class="tier-card tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — CI (Known σ)</h3>
+                    <button class="toggle-btn" aria-controls="ci-content" aria-expanded="true">Hide</button>
+                </div>
+                <div class="tier-content" id="ci-content">
+                    <p>When σ known: <code>CI = x̄ ± z* (σ / √n)</code>. For 95% use z* ≈ 1.96.</p>
+
+                    <div
+                        style="margin-top:12px; padding:12px; border-radius:8px; background:#fbfdff;border:1px solid #eef6ff">
+                        <div class="inline-form" aria-label="Confidence interval calculator">
+                            <div class="input-group"><label for="ci-xbar">x̄</label><input id="ci-xbar" type="number"
+                                    value="85" /></div>
+                            <div class="input-group"><label for="ci-sig">σ</label><input id="ci-sig" type="number"
+                                    value="6" /></div>
+                            <div class="input-group"><label for="ci-n">n</label><input id="ci-n" type="number"
+                                    value="36" /></div>
+                            <div class="input-group"><label for="ci-z">z*</label><input id="ci-z" type="number"
+                                    value="1.96" step="0.01" /></div>
+                            <button id="ciBtn">Compute CI</button>
+                        </div>
+                        <div id="ciOutput"
+                            style="margin-top:10px;font-family:var(--mono);font-weight:700;color:#0f172a">Result will
+                            appear here</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tier-card tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — MOE & Sample Size (Approx)</h3>
+                    <button class="toggle-btn" aria-controls="moe-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="moe-content" hidden>
+                    <p>Margin of Error (approx): <code>MOE = z* (σ / √n)</code></p>
+                    <p>To achieve MOE ≤ m: <code>n ≥ (z* σ / m)²</code></p>
+                    <div class="inline-form" style="margin-top:10px" aria-label="Sample size helper">
+                        <div class="input-group"><label for="moe-sig">σ</label><input id="moe-sig" type="number"
+                                value="5" /></div>
+                        <div class="input-group"><label for="moe-m">Desired MOE</label><input id="moe-m" type="number"
+                                value="1" /></div>
+                        <div class="input-group"><label for="moe-z">z*</label><input id="moe-z" type="number"
+                                value="1.96" step="0.01" /></div>
+                        <button id="moeBtn">Compute n</button>
+                    </div>
+                    <div id="moeOutput" style="margin-top:10px;font-family:var(--mono);font-weight:700;"></div>
+                </div>
+            </div>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — When σ unknown</h3>
+                    <button class="toggle-btn" aria-controls="t-note" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="t-note" hidden>
+                    <p>For small samples or unknown σ, replace z* with t* (Student's t). Degrees of freedom = n − 1. Use
+                        t-table or calculator.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- SAMPLING & BIAS -->
+        <section aria-labelledby="sampling">
+            <h2 id="sampling">Sampling, Bias & Valid Inference</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Logic & probability — inference only valid when sampling
+                is fair.</div>
+
+            <div class="tier-card tier1">
+                <div class="tier-heading">
+                    <h3>Tier 1 — Common Bias Types</h3>
+                    <button class="toggle-btn" aria-controls="biases" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="biases">
+                    <ul>
+                        <li><strong>Selection bias:</strong> sample systematically excludes groups.</li>
+                        <li><strong>Non-response:</strong> missing data is not random.</li>
+                        <li><strong>Measurement error:</strong> faulty instruments or ambiguous questions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card tier2">
+                <div class="tier-heading">
+                    <h3>Tier 2 — Practical Checks</h3>
+                    <button class="toggle-btn" aria-controls="checks" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="checks" hidden>
+                    <ol>
+                        <li>Who was included? Who was left out?</li>
+                        <li>How were data collected? Was it voluntary or randomized?</li>
+                        <li>Is the measurement consistent across the sample?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Reporting & Transparency</h3>
+                    <button class="toggle-btn" aria-controls="reporting" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="reporting" hidden>
+                    <p>Always report sample size, method of sampling, any exclusions, and confidence level. These
+                        details determine whether inference is trustworthy.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- PITFALLS & PRACTICE -->
+        <section aria-labelledby="pitfalls">
+            <h2 id="pitfalls">Common Pitfalls & Practice</h2>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Pitfalls</h3>
+                    <button class="toggle-btn" aria-controls="pitfalls-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="pitfalls-content">
+                    <ul>
+                        <li>Confusing correlation with causation.</li>
+                        <li>Ignoring outliers or masking them with mean alone.</li>
+                        <li>Over-interpreting small sample results.</li>
+                        <li>Selective reporting (p-hacking) — report full analysis plan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tier-card tier1">
+                <div class="tier-heading">
+                    <h3>Practice</h3>
+                    <button class="toggle-btn" aria-controls="practice" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="practice">
+                    <ol>
+                        <li>Compute mean, median, SD, IQR for a small dataset (5–10 pts) and compare conclusions.</li>
+                        <li>Convert raw score to Z, then compute probability of a more extreme score (two-tailed).</li>
+                        <li>Given x̄=85, σ=6, n=36, compute 95% CI and interpret in plain English.</li>
+                    </ol>
+
+                    <details>
+                        <summary>Worked example — CI</summary>
+                        <div style="margin-top:8px">
+                            <p>Given x̄=85, σ=6, n=36, z*=1.96: SE = 6/√36 = 1. CI = 85 ± 1.96(1) = [83.04, 86.96].
+                                Interpretation: We are 95% confident the population mean lies in this interval.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="resources">
+            <h2 id="resources">Quick Reference & Resources</h2>
+            <ul>
+                <li><strong>Z critical values:</strong> 90%→1.645, 95%→1.96, 99%→2.575.</li>
+                <li><strong>Rule of thumb:</strong> n ≥ 30 for CLT; for skewed data, larger n may be needed.</li>
+                <li><strong>When in doubt:</strong> visualize — histograms and boxplots reveal structure far faster than
+                    numbers alone.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- Scripts: normal CDF (erf approximation), calculators, toggles -->
+    <script>
+        /***********************
+         * Utilities
+         ***********************/
+        function erf(x) {
+            // Numerical approximation of error function (Abramowitz & Stegun 7.1.26)
+            const sign = x >= 0 ? 1 : -1;
+            x = Math.abs(x);
+            const a1 = 0.254829592;
+            const a2 = -0.284496736;
+            const a3 = 1.421413741;
+            const a4 = -1.453152027;
+            const a5 = 1.061405429;
+            const p = 0.3275911;
+            const t = 1.0 / (1.0 + p * x);
+            const y = 1.0 - ((((a5 * t + a4) * t + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+            return sign * y;
+        }
+
+        function normalCDF(z) {
+            // Standard normal CDF using erf
+            return 0.5 * (1 + erf(z / Math.sqrt(2)));
+        }
+
+        /***********************
+         * Accessible Toggles
+         ***********************/
+        (function () {
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                const ctrl = btn.getAttribute('aria-controls');
+                const content = document.getElementById(ctrl);
+                if (!content) return;
+                const initHidden = content.hasAttribute('hidden');
+                btn.setAttribute('aria-expanded', String(!initHidden));
+                btn.addEventListener('click', () => {
+                    const nowHidden = content.hasAttribute('hidden');
+                    if (nowHidden) content.removeAttribute('hidden');
+                    else content.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', String(nowHidden));
+                    btn.textContent = nowHidden ? 'Hide' : 'Show';
+                    btn.focus();
+                });
+            });
+        })();
+
+        /***********************
+         * Z Calculator
+         ***********************/
+        (function () {
+            const zX = document.getElementById('z-x');
+            const zMu = document.getElementById('z-mu');
+            const zSigma = document.getElementById('z-sigma');
+            const zTail = document.getElementById('z-tail');
+            const zBtn = document.getElementById('zCalcBtn');
+            const zOut = document.getElementById('zOutput');
+
+            if (zBtn) {
+                zBtn.addEventListener('click', () => {
+                    const x = parseFloat(zX.value);
+                    const mu = parseFloat(zMu.value);
+                    const sigma = parseFloat(zSigma.value);
+                    if (Number.isNaN(x) || Number.isNaN(mu) || Number.isNaN(sigma) || sigma <= 0) {
+                        zOut.textContent = 'Enter valid numbers (σ > 0).';
+                        zOut.style.color = '#ef4444';
+                        return;
+                    }
+                    const z = (x - mu) / sigma;
+                    const cdf = normalCDF(z);
+                    const tail = zTail.value;
+                    let resultText = `z = ${Math.round(z * 100) / 100} — P(Z ≤ z) = ${Math.round(cdf * 100000) / 1000}%`;
+                    if (tail === 'left') { /* already left */ }
+                    else if (tail === 'right') { resultText += ` ; P(Z ≥ z) = ${Math.round((1 - cdf) * 100000) / 1000}%`; }
+                    else { /* two-tailed: probability of more extreme than |z| */
+                        const twoTail = 2 * (1 - normalCDF(Math.abs(z)));
+                        resultText += ` ; two-tailed p = ${Math.round(twoTail * 100000) / 1000}%`;
+                    }
+                    zOut.textContent = resultText;
+                    zOut.style.color = 'var(--accent)';
+                });
+            }
+        })();
+
+        /***********************
+         * CI Calculator
+         ***********************/
+        (function () {
+            const xbar = document.getElementById('ci-xbar');
+            const sig = document.getElementById('ci-sig');
+            const nEl = document.getElementById('ci-n');
+            const zStar = document.getElementById('ci-z');
+            const ciBtn = document.getElementById('ciBtn');
+            const ciOut = document.getElementById('ciOutput');
+
+            if (ciBtn) {
+                ciBtn.addEventListener('click', () => {
+                    const x = parseFloat(xbar.value);
+                    const sigma = parseFloat(sig.value);
+                    const n = parseFloat(nEl.value);
+                    const z = parseFloat(zStar.value);
+                    if ([x, sigma, n, z].some(v => Number.isNaN(v)) || sigma <= 0 || n <= 0) {
+                        ciOut.textContent = 'Enter valid positive numbers.';
+                        ciOut.style.color = '#ef4444'; return;
+                    }
+                    const se = sigma / Math.sqrt(n);
+                    const moe = z * se;
+                    const lower = Math.round((x - moe) * 1000) / 1000;
+                    const upper = Math.round((x + moe) * 1000) / 1000;
+                    ciOut.textContent = `CI: [${lower}, ${upper}]  (MOE = ${Math.round(moe * 1000) / 1000})`;
+                    ciOut.style.color = 'var(--accent)';
+                });
+            }
+        })();
+
+        /***********************
+         * MOE → sample size
+         ***********************/
+        (function () {
+            const moeSig = document.getElementById('moe-sig');
+            const moeM = document.getElementById('moe-m');
+            const moeZ = document.getElementById('moe-z');
+            const moeBtn = document.getElementById('moeBtn');
+            const moeOut = document.getElementById('moeOutput');
+
+            if (moeBtn) {
+                moeBtn.addEventListener('click', () => {
+                    const sigma = parseFloat(moeSig.value);
+                    const m = parseFloat(moeM.value);
+                    const z = parseFloat(moeZ.value);
+                    if ([sigma, m, z].some(v => Number.isNaN(v)) || sigma <= 0 || m <= 0) {
+                        moeOut.textContent = 'Enter valid positive numbers.'; moeOut.style.color = '#ef4444'; return;
+                    }
+                    const n = Math.ceil(Math.pow((z * sigma / m), 2));
+                    moeOut.textContent = `Required n ≥ ${n}`;
+                    moeOut.style.color = 'var(--accent)';
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>

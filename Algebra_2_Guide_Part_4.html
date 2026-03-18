@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 4: Probability</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+
+            --tier1: #e7f0ff;
+            --tier1-border: #3b5bdb;
+
+            --tier2: #f3f4f6;
+            --tier2-border: #495057;
+
+            --tier3: #fff9db;
+            --tier3-border: #fab005;
+
+            --spiral: #f3f0ff;
+            --spiral-border: #be4bdb;
+
+            --radius: 14px;
+            --shadow: 0 12px 48px rgba(2, 6, 23, 0.06);
+
+            --focus: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 32px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 42px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 2.0rem;
+            font-weight: 800;
+        }
+
+        header p.lead {
+            margin: 6px 0 0 0;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #eef2f6;
+            margin: 28px 0;
+        }
+
+        blockquote {
+            background: #fff9db;
+            border-left: 6px solid var(--tier3-border);
+            padding: 16px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #4b5563;
+            margin: 18px 0;
+        }
+
+        .spiral {
+            background: var(--spiral);
+            border-left: 4px solid var(--spiral-border);
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: .95rem;
+            color: #4b5563;
+        }
+
+        /* Tier cards */
+        .tier-card {
+            border-radius: 12px;
+            padding: 16px;
+            margin: 14px 0;
+            border-left: 6px solid transparent
+        }
+
+        .tier1 {
+            background: var(--tier1);
+            border-color: var(--tier1-border)
+        }
+
+        .tier2 {
+            background: var(--tier2);
+            border-color: var(--tier2-border)
+        }
+
+        .tier3 {
+            background: var(--tier3);
+            border-color: var(--tier3-border)
+        }
+
+        .tier-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .toggle-btn:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* hidden content */
+        .tier-content[hidden] {
+            display: none
+        }
+
+        /* table */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 18px 0
+        }
+
+        .formula-table th {
+            background: #fbfdff;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: .85rem;
+            color: #374151;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eef2f6
+        }
+
+        .formula-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: .95rem
+        }
+
+        /* code */
+        code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: "Source Code Pro", monospace;
+            color: #b91c1c
+        }
+
+        /* identity box */
+        .identity-box {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: "Source Code Pro", monospace
+        }
+
+        /* details (worked solutions) */
+        details {
+            margin-top: 8px
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        summary:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* small interactive form */
+        .inline-form {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px
+        }
+
+        .inline-form input[type="number"] {
+            width: 86px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #e6e9ee
+        }
+
+        /* responsive */
+        @media (max-width:640px) {
+            .container {
+                padding: 20px
+            }
+
+            header h1 {
+                font-size: 1.4rem
+            }
+        }
+
+        /* print */
+        @media print {
+            .toggle-btn {
+                display: none
+            }
+
+            button {
+                display: none
+            }
+
+            body {
+                background: white
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <h1>Algebra 2 Excellence Bible — Part 4: Probability</h1>
+            <p class="lead">Core principle: Probability = winners ÷ total (but the work is in enumerating correctly).
+            </p>
+        </header>
+
+        <blockquote>
+            If you can list them, you can count them. If you can count them, you can reason.
+        </blockquote>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="f10">
+            <h2 id="f10">Foundation F10 — Combinatorics (Counting)</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Fractions &nbsp;→&nbsp; Probability = Winners / Total
+            </div>
+
+            <article class="tier-card tier1" aria-labelledby="perm-vs-comb">
+                <div class="tier-heading">
+                    <h3 id="perm-vs-comb">Tier 1 — Permutation vs Combination (What changes?)</h3>
+                    <button class="toggle-btn" aria-controls="perm-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="perm-content">
+                    <p><strong>Ask first:</strong> Does order matter?</p>
+                    <ul>
+                        <li><strong>Permutation (order matters):</strong> arrangements like <em>first/second/third</em>,
+                            codes.</li>
+                        <li><strong>Combination (order doesn't matter):</strong> choosing a committee, a set of winners.
+                        </li>
+                    </ul>
+
+                    <p class="note"><strong>Quick intuition:</strong> nPr ≥ nCr. You remove duplicates (divide by r!) to
+                        get combinations.</p>
+
+                    <details>
+                        <summary>Worked example — 3 letters from ABC</summary>
+                        <div style="margin-top:8px">
+                            <p>Permutations (order matters): ABC, ACB, BAC, BCA, CAB, CBA → 6 = 3!<br>
+                                Combinations (order doesn't matter): {A,B,C} → 1 (choose 3 of 3). If choose 2: AB, AC,
+                                BC → 3.</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="formulas">
+                <div class="tier-heading">
+                    <h3 id="formulas">Tier 2 — Standard Formulas</h3>
+                    <button class="toggle-btn" aria-controls="formulas-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="formulas-content" hidden>
+                    <table class="formula-table" aria-label="combinatorics formulas">
+                        <thead>
+                            <tr>
+                                <th>Quantity</th>
+                                <th>Formula</th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Permutation</td>
+                                <td><code>nPr = n! / (n - r)! </code></td>
+                                <td>Order matters</td>
+                            </tr>
+                            <tr>
+                                <td>Combination</td>
+                                <td><code>nCr = n! / (r! (n - r)!)</code></td>
+                                <td>Order does not matter</td>
+                            </tr>
+                            <tr>
+                                <td>Factorial</td>
+                                <td><code>n! = n × (n-1) × ... × 1</code></td>
+                                <td>0! = 1 by convention</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div>
+                        <strong>Interactive (Try it):</strong>
+                        <div class="inline-form" aria-hidden="false">
+                            <label for="n-input">n</label>
+                            <input id="n-input" type="number" min="0" value="6" />
+                            <label for="r-input">r</label>
+                            <input id="r-input" type="number" min="0" value="3" />
+                            <button id="calcBtn" type="button">Compute</button>
+                        </div>
+                        <div id="calcResult"
+                            style="margin-top:10px;font-family:Source Code Pro,monospace;color:#0f172a"></div>
+                        <div class="note" style="margin-top:8px">Uses multiplicative approach to avoid huge intermediate
+                            factorials.</div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="f11">
+            <h2 id="f11">Foundation F11 — Rules: AND, OR, Complement</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Sets & Venn diagrams — overlap matters.</div>
+
+            <article class="tier-card tier1" aria-labelledby="and-or">
+                <div class="tier-heading">
+                    <h3 id="and-or">Tier 1 — Keywords & Quick Rules</h3>
+                    <button class="toggle-btn" aria-controls="and-or-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="and-or-content">
+                    <p><strong>AND</strong> → Multiply (for independent events).<br>
+                        <strong>OR</strong> → Add, but subtract overlap unless mutually exclusive.<br>
+                        <strong>Complement</strong> → P(A') = 1 − P(A).
+                    </p>
+
+                    <details>
+                        <summary>Worked example — OR with overlap</summary>
+                        <div style="margin-top:8px">
+                            <p>In a deck, P(Heart) = 13/52 = 1/4. P(Ace) = 4/52 = 1/13. P(Heart OR Ace) =
+                                P(Heart)+P(Ace) − P(Heart AND Ace).</p>
+                            <p>P(Heart AND Ace) = 1 (Ace of hearts) / 52 = 1/52. So total = 13/52 + 4/52 − 1/52 = 16/52
+                                = 4/13.</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="mut-excl">
+                <div class="tier-heading">
+                    <h3 id="mut-excl">Tier 2 — Mutually Exclusive</h3>
+                    <button class="toggle-btn" aria-controls="mut-excl-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="mut-excl-content" hidden>
+                    <p>Mutually exclusive events cannot both occur. If they are, P(A or B) = P(A) + P(B). Otherwise use
+                        P(A or B) = P(A)+P(B) − P(A and B).</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="f12">
+            <h2 id="f12">Foundation F12 — Conditional Probability & Independence</h2>
+
+            <div class="spiral"><strong>Spiral link:</strong> Tree diagrams — moving down a branch changes the sample
+                space.</div>
+
+            <article class="tier-card tier1" aria-labelledby="conditional">
+                <div class="tier-heading">
+                    <h3 id="conditional">Tier 1 — The "Given" (P(A | B))</h3>
+                    <button class="toggle-btn" aria-controls="conditional-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="conditional-content">
+                    <p><strong>Definition:</strong> <code>P(A | B) = P(A and B) / P(B)</code> — change the denominator
+                        to the condition.</p>
+                    <p><strong>Independence check:</strong> A and B independent ⇔ P(A and B) = P(A) × P(B).</p>
+
+                    <details>
+                        <summary>Worked example — cards without replacement</summary>
+                        <div style="margin-top:8px">
+                            <p>Probability first card is Ace and second (without replacement) is Ace:</p>
+                            <p>P(first Ace) = 4/52. Given that, P(second Ace) = 3/51. So P(both) = (4/52)×(3/51) =
+                                1/221.</p>
+                        </div>
+                    </details>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="bayes">
+                <div class="tier-heading">
+                    <h3 id="bayes">Tier 2 — Bayes (Intro)</h3>
+                    <button class="toggle-btn" aria-controls="bayes-content" aria-expanded="false">Show</button>
+                </div>
+
+                <div class="tier-content" id="bayes-content" hidden>
+                    <p>Bayes uses conditional probabilities to reverse conditioning. For Algebra 2, understand structure
+                        before formula: P(A|B) proportional to P(B|A)P(A).</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="pitfalls">
+            <h2 id="pitfalls">Common Pitfalls & Quick Checks</h2>
+
+            <div class="tier-card tier3">
+                <div class="tier-heading">
+                    <h3>Tier 3 — Pitfalls</h3>
+                    <button class="toggle-btn" aria-controls="pitfalls-content" aria-expanded="true">Hide</button>
+                </div>
+
+                <div class="tier-content" id="pitfalls-content">
+                    <ul>
+                        <li>Mixing up with/without replacement — always adjust counts when items are removed.</li>
+                        <li>Using addition for OR without removing overlap.</li>
+                        <li>For conditional: change the denominator to the condition (don’t forget to restrict the
+                            universe).</li>
+                        <li>Permutation vs combination confusion — ask the "order?" question always.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="next">
+            <h2 id="next">Next Steps & Practice</h2>
+
+            <ul>
+                <li><strong>Practice:</strong> Classify 10 word problems as Permutation/Combination or neither.</li>
+                <li><strong>Drill:</strong> 10 conditional probability problems: with/without replacement.</li>
+                <li><strong>Challenge:</strong> Create a tree diagram for a two-stage selection and compute P(A then B).
+                </li>
+            </ul>
+
+            <details style="margin-top:12px">
+                <summary>Sample Exam-Style Question (with solution)</summary>
+                <div style="margin-top:8px">
+                    <p><strong>Q:</strong> From 6 men and 4 women, randomly choose 3 people. What is the probability the
+                        selection contains exactly 2 women?</p>
+                    <p><strong>Solution:</strong></p>
+                    <ol>
+                        <li>Count winners: Choose 2 women from 4 → C(4,2) = 6. Choose 1 man from 6 → C(6,1) = 6. Total
+                            winners = 6×6 = 36.</li>
+                        <li>Total ways: choose any 3 from 10 → C(10,3) = 120.</li>
+                        <li>Probability = 36 / 120 = 3 / 10.</li>
+                    </ol>
+                </div>
+            </details>
+        </section>
+
+    </div>
+
+    <script>
+        /* Accessible toggles: each .toggle-btn controls an element by id (aria-controls).
+           It updates aria-expanded on the button and toggles the hidden attribute on the content. */
+        (function () {
+            const toggles = document.querySelectorAll('.toggle-btn');
+            toggles.forEach(btn => {
+                const contentId = btn.getAttribute('aria-controls');
+                const content = document.getElementById(contentId);
+                if (!content) return;
+                // Initialize aria-expanded from content state
+                const isHidden = content.hasAttribute('hidden');
+                btn.setAttribute('aria-expanded', String(!isHidden));
+                btn.addEventListener('click', () => {
+                    const nowHidden = content.hasAttribute('hidden');
+                    if (nowHidden) content.removeAttribute('hidden');
+                    else content.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', String(nowHidden));
+                    btn.textContent = nowHidden ? 'Hide' : 'Show';
+                    btn.focus();
+                });
+                // keyboard: Enter/Space handled by default for buttons
+            });
+
+            /* Interactive combinatorics calculator (basic, robust enough for classroom use).
+               Uses multiplicative formula to compute nPr and nCr to avoid huge intermediate factorials. */
+            const nInput = document.getElementById('n-input');
+            const rInput = document.getElementById('r-input');
+            const calcBtn = document.getElementById('calcBtn');
+            const out = document.getElementById('calcResult');
+
+            function nPr(n, r) {
+                if (r > n || n < 0 || r < 0) return NaN;
+                let res = 1;
+                for (let i = 0; i < r; i++) { res *= (n - i); }
+                return res;
+            }
+            function nCr(n, r) {
+                if (r > n || n < 0 || r < 0) return NaN;
+                // use symmetry
+                r = Math.min(r, n - r);
+                let numer = 1, denom = 1;
+                for (let i = 1; i <= r; i++) {
+                    numer *= (n - r + i);
+                    denom *= i;
+                }
+                return numer / denom;
+            }
+
+            if (calcBtn) {
+                calcBtn.addEventListener('click', () => {
+                    const n = Number(nInput.value);
+                    const r = Number(rInput.value);
+                    if (!Number.isFinite(n) || !Number.isFinite(r) || n < 0 || r < 0) {
+                        out.textContent = 'Please enter non-negative integers for n and r.';
+                        return;
+                    }
+                    const perm = nPr(n, r);
+                    const comb = nCr(n, r);
+                    if (Number.isNaN(perm) || Number.isNaN(comb)) {
+                        out.textContent = 'Make sure 0 ≤ r ≤ n.';
+                        return;
+                    }
+                    out.innerHTML = `<div><strong>nPr (${n}P${r}) =</strong> ${perm}</div>
+                       <div style="margin-top:6px"><strong>nCr (${n}C${r}) =</strong> ${comb}</div>`;
+                });
+            }
+        })();
+    </script>
+
+</body>
+
+</html>

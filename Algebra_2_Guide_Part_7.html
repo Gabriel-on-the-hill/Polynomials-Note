@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 7: Rational Functions (Refined)</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --text: #0f1724;
+            --muted: #6b7280;
+            --accent: #3b82f6;
+            --tier1: #e7f0ff;
+            --tier1-border: #3b5bdb;
+            --tier2: #f3f4f6;
+            --tier2-border: #475569;
+            --tier3: #fff9db;
+            --tier3-border: #f59e0b;
+            --spiral: #f3f0ff;
+            --spiral-border: #be4bdb;
+            --radius: 14px;
+            --shadow: 0 14px 48px rgba(2, 6, 23, 0.06);
+            --focus: #94a3b8;
+            --mono: "Source Code Pro", monospace;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 32px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 44px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* headings */
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 2rem;
+            font-weight: 800
+        }
+
+        header p.lead {
+            margin: 6px 0 0 0;
+            color: var(--muted);
+            font-weight: 600
+        }
+
+        /* small utilities */
+        hr.sep {
+            border: 0;
+            height: 1px;
+            background: #eef2f6;
+            margin: 28px 0
+        }
+
+        blockquote {
+            background: #fff9db;
+            border-left: 6px solid var(--tier3-border);
+            padding: 16px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #374151;
+            margin: 18px 0
+        }
+
+        .spiral {
+            background: var(--spiral);
+            border-left: 4px solid var(--spiral-border);
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: .95rem;
+            color: #4b5563
+        }
+
+        /* tier cards */
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            border-left: 6px solid transparent
+        }
+
+        .tier1 {
+            background: var(--tier1);
+            border-color: var(--tier1-border)
+        }
+
+        .tier2 {
+            background: var(--tier2);
+            border-color: var(--tier2-border)
+        }
+
+        .tier3 {
+            background: var(--tier3);
+            border-color: var(--tier3-border)
+        }
+
+        .tier-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .tier-heading h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: #374151;
+            font-weight: 700
+        }
+
+        .toggle-btn:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        /* hidden */
+        .tier-content[hidden] {
+            display: none
+        }
+
+        /* tables & code */
+        .formula-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 18px 0
+        }
+
+        .formula-table th {
+            background: #fbfdff;
+            text-align: left;
+            padding: 10px 12px;
+            font-size: .85rem;
+            color: #374151;
+            text-transform: uppercase;
+            border-bottom: 1px solid #eef2f6
+        }
+
+        .formula-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #f3f5f8;
+            font-size: .95rem
+        }
+
+        code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: var(--mono);
+            color: #b91c1c
+        }
+
+        .identity-box {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: var(--mono)
+        }
+
+        /* inline form */
+        .inline-form {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-top: 12px;
+            flex-wrap: wrap
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .input-group label {
+            font-size: .85rem;
+            font-weight: 600;
+            color: #475569
+        }
+
+        .inline-form input[type="number"],
+        .inline-form input[type="text"],
+        .inline-form select {
+            width: 120px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit
+        }
+
+        .inline-form button {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 0;
+            background: var(--accent);
+            color: white;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .inline-form button.secondary {
+            background: #0f172a
+        }
+
+        /* details */
+        details {
+            margin-top: 8px
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700
+        }
+
+        summary:focus {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: var(--muted);
+        }
+
+        /* responsive */
+        @media (max-width:720px) {
+            .container {
+                padding: 20px
+            }
+
+            header h1 {
+                font-size: 1.5rem
+            }
+
+            .inline-form input {
+                width: 86px
+            }
+        }
+
+        /* print */
+        @media print {
+
+            .toggle-btn,
+            .inline-form button {
+                display: none
+            }
+
+            body {
+                background: white
+            }
+
+            .container {
+                box-shadow: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" role="main">
+        <header>
+            <h1>Algebra 2 Excellence Bible — Part 7: Rational Functions (Refined)</h1>
+            <p class="lead">Core principle: Division by zero is the electrical fence of mathematics. Do not touch it.
+            </p>
+        </header>
+
+        <blockquote>A rational function is just a fraction with an attitude (polynomials top and bottom).</blockquote>
+
+        <hr class="sep" />
+
+        <!-- DOMAIN RESTRICTIONS -->
+        <section aria-labelledby="f19">
+            <h2 id="f19">F19 — The Domain (The Forbidden Zone)</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Fractions (Algebra 1). You can never have 0 in the
+                denominator.</div>
+
+            <article class="tier-card tier1" aria-labelledby="rule1">
+                <div class="tier-heading">
+                    <h3 id="rule1">Tier 1 — Set Denominator ≠ 0</h3>
+                    <button class="toggle-btn" aria-controls="rule1-content">Hide</button>
+                </div>
+                <div class="tier-content" id="rule1-content">
+                    <p><strong>The Rule:</strong> The domain is EVERYTHING except what makes the bottom zero.</p>
+                    <div class="identity-box">
+                        Example: y = 1 / (x - 3)<br>
+                        Bottom is zero when x = 3.<br>
+                        Domain: {x | x ≠ 3} or (-∞, 3) U (3, ∞)
+                    </div>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="holes-vs-va">
+                <div class="tier-heading">
+                    <h3 id="holes-vs-va">Tier 2 — Hole vs Asymptote</h3>
+                    <button class="toggle-btn" aria-controls="holes-vs-va-content">Show</button>
+                </div>
+                <div class="tier-content" id="holes-vs-va-content" hidden>
+                    <p>When you find a forbidden value (x=c), ask: <strong>Can I cancel it out?</strong></p>
+                    <ul>
+                        <li><strong>Yes (Removable):</strong> It's a HOLE. The graph has a tiny gap there.</li>
+                        <li><strong>No (Non-removable):</strong> It's a VERTICAL ASYMPTOTE. The graph hits a wall and
+                            explodes to ∞.</li>
+                    </ul>
+                    <p class="note">Always factor top and bottom first.</p>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- ASYMPTOTES -->
+        <section aria-labelledby="f20">
+            <h2 id="f20">F20 — Asymptotes (Walls & Horizons)</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Polynomial Degrees (Part 2). It's a battle of strength
+                between top and bottom.</div>
+
+            <article class="tier-card tier1" aria-labelledby="bobo">
+                <div class="tier-heading">
+                    <h3 id="bobo">Tier 1 — Horizontal Asymptotes (BOBO BOTN EATS DC)</h3>
+                    <button class="toggle-btn" aria-controls="bobo-content">Hide</button>
+                </div>
+                <div class="tier-content" id="bobo-content">
+                    <p>Compare degree of Top (N) vs Bottom (D):</p>
+                    <table class="formula-table" aria-label="Mnemonic table">
+                        <thead>
+                            <tr>
+                                <th>Mnemonic</th>
+                                <th>Meaning</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>BOBO</strong></td>
+                                <td><strong>B</strong>igger <strong>O</strong>n <strong>B</strong>ottom</td>
+                                <td>y = <strong>0</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>BOTN</strong></td>
+                                <td><strong>B</strong>igger <strong>O</strong>n <strong>T</strong>op</td>
+                                <td><strong>N</strong>one (Slant if diff is 1)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>EATS DC</strong></td>
+                                <td><strong>E</strong>xponents <strong>A</strong>re <strong>T</strong>he
+                                    <strong>S</strong>ame
+                                </td>
+                                <td><strong>D</strong>ivide <strong>C</strong>oefficients</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+            <article class="tier-card tier3" aria-labelledby="fence">
+                <div class="tier-heading">
+                    <h3 id="fence">Tier 3 — The Electric Fence (Vertical Asymptote)</h3>
+                    <button class="toggle-btn" aria-controls="fence-content">Hide</button>
+                </div>
+                <div class="tier-content" id="fence-content">
+                    <p>As you get closer to the wall (asymptote), the value explodes.</p>
+
+                    <div
+                        style="margin-top:20px; padding:16px; background:#fff5f5; border-radius:12px; border:1px solid #ffc9c9;">
+                        <strong>Interactive "Electric Fence" Explorer:</strong>
+                        <p style="margin-top:4px; font-size:0.9em; color:#991b1b">Function: <code>y = 1 / (x - c)</code>
+                        </p>
+
+                        <div class="inline-form">
+                            <div class="input-group">
+                                <label for="wall-c">Wall Location (c)</label>
+                                <input id="wall-c" type="number" value="3" />
+                            </div>
+                            <div class="input-group">
+                                <label for="val-x">Current X (Slide me!)</label>
+                                <input id="val-x" type="range" min="0" max="6" step="0.01" value="5"
+                                    style="width:150px" />
+                                <span id="val-x-display" style="font-family:var(--mono);">5.00</span>
+                            </div>
+                        </div>
+
+                        <div id="fenceResult"
+                            style="margin-top:12px; font-family:var(--mono); font-weight:700; font-size:1.1rem; color:#b91c1c;">
+                            Dist to Wall: 2.00 → y = 0.50
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- OPERATIONS -->
+        <section aria-labelledby="f21">
+            <h2 id="f21">F21 — Algebra with Rationals</h2>
+            <div class="spiral"><strong>Spiral link:</strong> Complex Fractions. Standard fraction rules apply.</div>
+
+            <article class="tier-card tier1" aria-labelledby="ops">
+                <div class="tier-heading">
+                    <h3 id="ops">Tier 1 — The Rules</h3>
+                    <button class="toggle-btn" aria-controls="ops-content">Hide</button>
+                </div>
+                <div class="tier-content" id="ops-content">
+                    <ul>
+                        <li><strong>Multiply:</strong> Straight across. <code>(A/B)·(C/D) = AC/BD</code>.</li>
+                        <li><strong>Divide:</strong> Keep-Change-Flip. <code>(A/B)/(C/D) = (A/B)·(D/C)</code>.</li>
+                        <li><strong>Add/Sub:</strong> NEED Common Denominator. The "LCD" is the sewing kit that stitches
+                            them together.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <!-- PRACTICE & PITFALLS -->
+        <section aria-labelledby="practice">
+            <h2 id="practice">Practice & Pitfalls</h2>
+
+            <article class="tier-card tier3" aria-labelledby="pitfalls-list">
+                <div class="tier-heading">
+                    <h3 id="pitfalls-list">Tier 3 — Common Pitfalls</h3>
+                    <button class="toggle-btn" aria-controls="pitfalls-content">Show</button>
+                </div>
+                <div class="tier-content" id="pitfalls-content" hidden>
+                    <ul>
+                        <li>Canceling terms that are trapped in addition (e.g., canceling x in <code>(x+1)/x</code>).
+                            <strong>Forbidden.</strong>
+                        </li>
+                        <li>Forgetting to check the domain of the simplified answer. The hole still exists even if you
+                            canceled it!</li>
+                        <li>Solve: Cross-multiply ONLY when it's Fraction = Fraction. If it's Fraction + Fraction =
+                            Fraction, simplify first.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="tier-card tier2" aria-labelledby="worked">
+                <div class="tier-heading">
+                    <h3 id="worked">Worked Example — Graphing</h3>
+                    <button class="toggle-btn" aria-controls="worked-content">Show</button>
+                </div>
+                <div class="tier-content" id="worked-content" hidden>
+                    <p><strong>Graph:</strong> <code>y = (x+3)/(x-2)</code></p>
+                    <ol>
+                        <li><strong>VA:</strong> Denom = 0 → x = 2.</li>
+                        <li><strong>HA:</strong> Degrees equal (1 vs 1). Ratio of coeffs = 1/1 = 1. y = 1.</li>
+                        <li><strong>Intercepts:</strong>
+                            <ul>
+                                <li>y-int (x=0): 3/-2 = -1.5.</li>
+                                <li>x-int (y=0): Top = 0 → x = -3.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </article>
+        </section>
+
+        <hr class="sep" />
+
+        <section aria-labelledby="next">
+            <h2 id="next">Next Steps</h2>
+            <ul>
+                <li>Master factoring. You cannot survive Rational Functions without fast factoring.</li>
+                <li>Practice finding common denominators for algebra expressions.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        (function () {
+            // Initialize toggles
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                const ctrl = btn.getAttribute('aria-controls');
+                const content = document.getElementById(ctrl);
+                if (!content) return;
+                const initHidden = content.hasAttribute('hidden');
+                btn.setAttribute('aria-expanded', String(!initHidden));
+                btn.textContent = initHidden ? 'Show' : 'Hide';
+                btn.addEventListener('click', () => {
+                    const nowHidden = content.hasAttribute('hidden');
+                    if (nowHidden) content.removeAttribute('hidden');
+                    else content.setAttribute('hidden', '');
+                    btn.setAttribute('aria-expanded', String(nowHidden));
+                    btn.textContent = nowHidden ? 'Hide' : 'Show';
+                    btn.focus();
+                });
+            });
+
+            // Electric Fence Interactive
+            const wallC = document.getElementById('wall-c');
+            const valX = document.getElementById('val-x');
+            const valDisplay = document.getElementById('val-x-display');
+            const fenceResult = document.getElementById('fenceResult');
+
+            function updateFence() {
+                const c = parseFloat(wallC.value);
+                const x = parseFloat(valX.value);
+
+                if (Number.isNaN(c) || Number.isNaN(x)) return;
+
+                valDisplay.textContent = x.toFixed(2);
+
+                const dist = x - c;
+
+                // Check if hit wall
+                if (Math.abs(dist) < 0.001) {
+                    fenceResult.innerHTML = `WALL HIT! ⚡ UNDEFINED ⚡`;
+                    fenceResult.style.color = "#ff0000";
+                    return;
+                }
+
+                const y = 1 / dist;
+                fenceResult.innerHTML = `Dist to Wall: ${dist.toFixed(3)} → y = <strong>${y.toFixed(2)}</strong>`;
+
+                // Color change based on danger
+                if (Math.abs(y) > 10) fenceResult.style.color = "#ef4444"; // Red for danger
+                else fenceResult.style.color = "#3b82f6"; // Safe blue
+            }
+
+            if (valX && wallC) {
+                valX.addEventListener('input', updateFence);
+                wallC.addEventListener('input', updateFence);
+                // Init
+                updateFence();
+            }
+
+        })();
+    </script>
+</body>
+
+</html>

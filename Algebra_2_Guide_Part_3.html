@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Algebra 2 Excellence Bible — Part 3: Trigonometry</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+
+            --tier1: #e7f0ff;
+            --tier1-border: #3b5bdb;
+
+            --tier2: #f3f4f6;
+            --tier2-border: #495057;
+
+            --tier3: #fff9db;
+            --tier3-border: #fab005;
+
+            --spiral: #f3f0ff;
+            --spiral-border: #be4bdb;
+
+            --radius: 14px;
+            --shadow: 0 10px 40px rgba(0, 0, 0, .06);
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: var(--card);
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        h2 {
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        blockquote {
+            background: #fff9db;
+            border-left: 6px solid var(--tier3-border);
+            padding: 18px;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .spiral {
+            background: var(--spiral);
+            border-left: 5px solid var(--spiral-border);
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: .95rem;
+        }
+
+        .tier-card {
+            border-radius: 12px;
+            padding: 18px;
+            margin: 18px 0;
+            border-left: 6px solid;
+        }
+
+        .tier1 {
+            background: var(--tier1);
+            border-color: var(--tier1-border);
+        }
+
+        .tier2 {
+            background: var(--tier2);
+            border-color: var(--tier2-border);
+        }
+
+        .tier3 {
+            background: var(--tier3);
+            border-color: var(--tier3-border);
+        }
+
+        .tier-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: none;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        button:focus {
+            outline: 3px solid #94a3b8;
+            outline-offset: 2px;
+        }
+
+        .tier-content[hidden] {
+            display: none;
+        }
+
+        code {
+            background: #eef2f7;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-family: "Source Code Pro", monospace;
+            color: #b91c1c;
+        }
+
+        .identity-box {
+            background: #f1f5f9;
+            padding: 14px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-family: "Source Code Pro", monospace;
+        }
+
+        @media print {
+            button {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>Algebra 2 Excellence Bible — Part 3: Trigonometry</h1>
+        <p><strong>Core Principle:</strong> Trigonometry is coordinate geometry on a circle.</p>
+
+        <blockquote>
+            Do not memorize the unit circle. Construct it.
+        </blockquote>
+
+        <h2>Foundation F7 — From Triangle to Coordinate Plane</h2>
+
+        <div class="spiral">
+            <strong>Formal Definition:</strong><br>
+            An angle in <em>standard position</em> has its vertex at (0,0) and initial side on the positive x-axis.
+        </div>
+
+        <div class="tier-card tier1">
+            <div class="tier-heading">
+                <h3>Tier 1 — Coordinate Definitions</h3>
+                <button class="toggle">Hide</button>
+            </div>
+            <div class="tier-content">
+                <p>For a point (x,y) on a circle with radius r:</p>
+                <p><code>sinθ = y/r</code></p>
+                <p><code>cosθ = x/r</code></p>
+                <p><code>tanθ = y/x</code></p>
+            </div>
+        </div>
+
+        <div class="tier-card tier2">
+            <div class="tier-heading">
+                <h3>Tier 2 — Unit Circle Upgrade</h3>
+                <button class="toggle">Show</button>
+            </div>
+            <div class="tier-content" hidden>
+                <p>If r = 1 (unit circle):</p>
+                <p><strong>sinθ = y</strong></p>
+                <p><strong>cosθ = x</strong></p>
+
+                <div class="identity-box">
+                    sin²θ + cos²θ = 1
+                </div>
+
+                <p>This identity comes directly from x² + y² = 1.</p>
+            </div>
+        </div>
+
+        <div class="tier-card tier3">
+            <div class="tier-heading">
+                <h3>Tier 3 — Reciprocal Functions</h3>
+                <button class="toggle">Show</button>
+            </div>
+            <div class="tier-content" hidden>
+                <p><code>cscθ = 1/sinθ</code></p>
+                <p><code>secθ = 1/cosθ</code></p>
+                <p><code>cotθ = 1/tanθ</code></p>
+                <p>Undefined when denominator = 0.</p>
+            </div>
+        </div>
+
+        <h2>Foundation F8 — Quadrants & Reference Angles</h2>
+
+        <div class="tier-card tier1">
+            <div class="tier-heading">
+                <h3>Tier 1 — Sign Logic</h3>
+                <button class="toggle">Hide</button>
+            </div>
+            <div class="tier-content">
+                <p><strong>ASTC:</strong></p>
+                <ul>
+                    <li>Q1: All positive</li>
+                    <li>Q2: Sine positive</li>
+                    <li>Q3: Tangent positive</li>
+                    <li>Q4: Cosine positive</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tier-card tier2">
+            <div class="tier-heading">
+                <h3>Tier 2 — Reference Angle (Formal)</h3>
+                <button class="toggle">Show</button>
+            </div>
+            <div class="tier-content" hidden>
+                <p>The reference angle is the acute angle formed between the terminal side and the x-axis.</p>
+                <p>Example: 150° → Reference angle = 30°.</p>
+            </div>
+        </div>
+
+        <h2>Foundation F9 — Radians (Arc Length Definition)</h2>
+
+        <div class="tier-card tier1">
+            <div class="tier-heading">
+                <h3>Tier 1 — Definition</h3>
+                <button class="toggle">Hide</button>
+            </div>
+            <div class="tier-content">
+                <p><strong>θ (radians) = arc length / radius</strong></p>
+                <p>π radians = 180°</p>
+                <p>2π radians = 360°</p>
+            </div>
+        </div>
+
+        <div class="tier-card tier2">
+            <div class="tier-heading">
+                <h3>Tier 2 — Why Radians Matter</h3>
+                <button class="toggle">Show</button>
+            </div>
+            <div class="tier-content" hidden>
+                <p>Radians eliminate unit distortion in calculus. They make trig functions behave naturally under
+                    limits.</p>
+            </div>
+        </div>
+
+        <h2>Next Steps</h2>
+        <ul>
+            <li>Construct the full unit circle without memorizing a chart.</li>
+            <li>Prove sin²θ + cos²θ = 1 from geometry.</li>
+            <li>Identify where trig functions are undefined.</li>
+        </ul>
+
+    </div>
+
+    <script>
+        document.querySelectorAll(".toggle").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const content = btn.closest(".tier-card").querySelector(".tier-content");
+                const isHidden = content.hasAttribute("hidden");
+                content.toggleAttribute("hidden");
+                btn.textContent = isHidden ? "Hide" : "Show";
+            });
+        });
+    </script>
+
+</body>
+
+</html>

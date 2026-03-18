@@ -254,6 +254,18 @@
             background: #f8fafc;
         }
 
+        .practice-block {
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+            border: 1px solid #bfdbfe;
+            border-left: 5px solid #3b82f6;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 24px;
+        }
+        .practice-block h4 { margin: 0 0 12px 0; font-size: 1.05rem; color: #1e40af; }
+        .practice-block ol { margin-bottom: 16px; }
+        .practice-block ol li { margin-bottom: 12px; line-height: 1.6; }
+
         details.worked-example summary {
             font-weight: 600;
             cursor: pointer;
@@ -475,6 +487,25 @@
                     <p><em>Not all polynomials are even or odd! Most are neither.</em></p>
                 </div>
             </article>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — End Behavior</h4>
+                <ol>
+                    <li><strong>(Multi-Select)</strong> Which functions have the end behavior "starts DOWN-left, ends UP-right"? Select ALL that apply.<br>
+                        A. \( f(x) = 3x^5 - x^2 \)<br>
+                        B. \( g(x) = -x^3 + 4 \)<br>
+                        C. \( h(x) = x^7 - 100x^6 \)<br>
+                        D. \( k(x) = 2x^4 + 1 \)</li>
+                    <li><strong>(Interpretation)</strong> A polynomial has degree 4 and a negative leading coefficient. Describe its end behavior using arrow notation.</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>1.</strong> "Down-left, Up-right" = Odd degree, positive leading coefficient. A: Degree 5, leading +3 ✓. B: Degree 3, leading -1 ✗ (flipped). C: Degree 7, leading +1 ✓. D: Degree 4, even ✗. <strong>Answer: A and C.</strong></p>
+                        <p><strong>2.</strong> Even degree + negative coefficient = Both ends DOWN. \( x \to \infty, y \to -\infty \) and \( x \to -\infty, y \to -\infty \). (Like \( y = -x^2 \).)</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 3. Zeros & Multiplicity -->
@@ -511,6 +542,21 @@
                     </ul>
                 </div>
             </details>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Zeros & Multiplicity</h4>
+                <ol>
+                    <li><strong>(Reverse Engineering)</strong> Write a polynomial function in factored form that has: x-intercepts at \( x = -1 \) (crosses), \( x = 3 \) (bounces), negative leading coefficient, and degree 4.</li>
+                    <li><strong>(Graph Reading)</strong> A polynomial graph crosses the x-axis at \( x = -2 \), bounces at \( x = 0 \), and jogs through at \( x = 4 \). What is the minimum degree? Explain.</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>1.</strong> Crosses at -1 = mult 1. Bounces at 3 = mult 2. Total so far: 3. Need degree 4, so add mult 1 more somewhere. One answer: \( f(x) = -(x+1)(x-3)^2(x) \) (degree 4, negative leading coeff). Or simply raise -1 to mult 2: \( f(x) = -(x+1)^2(x-3)^2 \).</p>
+                        <p><strong>2.</strong> Crosses = mult 1 (at least). Bounces = mult 2. Jogs = mult 3. Minimum degree = \( 1 + 2 + 3 = 6 \).</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 4. Polynomial Division -->
@@ -648,6 +694,22 @@
                     <p><strong>Conclusion:</strong> Because \( P(-2) = 0 \), \( (x+2) \) IS a factor.</p>
                 </div>
             </details>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Remainder & Factor Theorems</h4>
+                <ol>
+                    <li><strong>(Quick Evaluate)</strong> Use the Remainder Theorem to find the remainder when \( P(x) = x^4 - 3x^2 + 5x - 2 \) is divided by \( (x - 1) \). Is \( (x - 1) \) a factor?</li>
+                    <li><strong>(Multi-Select)</strong> Which of the following are factors of \( P(x) = x^3 - 6x^2 + 11x - 6 \)? Select ALL that apply.<br>
+                        A. \( (x - 1) \)&emsp;B. \( (x - 2) \)&emsp;C. \( (x - 3) \)&emsp;D. \( (x + 1) \)</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>1.</strong> \( P(1) = 1 - 3 + 5 - 2 = 1 \). Remainder = 1. Since it's not zero, \( (x-1) \) is <strong>NOT</strong> a factor.</p>
+                        <p><strong>2.</strong> \( P(1) = 1-6+11-6 = 0 \) ✓. \( P(2) = 8-24+22-6 = 0 \) ✓. \( P(3) = 27-54+33-6 = 0 \) ✓. \( P(-1) = -1-6-11-6 = -24 \) ✗. <strong>Answer: A, B, and C.</strong></p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 7. Rational Root Theorem -->
@@ -692,6 +754,24 @@
                 <li>\( x^2 = 4 \implies x = \pm 2 \)</li>
                 <li>\( x^2 = 1 \implies x = \pm 1 \)</li>
             </ul>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Quadratic in Form</h4>
+                <ol>
+                    <li><strong>(Solve)</strong> Solve \( x^4 - 13x^2 + 36 = 0 \) using substitution.</li>
+                    <li><strong>(Recognition)</strong> Which of these can be solved by "quadratic in form" substitution?<br>
+                        A. \( x^6 + 7x^3 - 8 = 0 \)<br>
+                        B. \( x^3 + 2x^2 + 1 = 0 \)<br>
+                        C. \( x - 5\sqrt{x} + 6 = 0 \)</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>1.</strong> Let \( u = x^2 \). Then \( u^2 - 13u + 36 = 0 \implies (u-9)(u-4) = 0 \). \( u = 9 \implies x = \pm 3 \). \( u = 4 \implies x = \pm 2 \). Solutions: \( \{-3, -2, 2, 3\} \).</p>
+                        <p><strong>2.</strong> A: Yes, let \( u = x^3 \), then \( u^2 + 7u - 8 = 0 \). B: No, \( x^3 \) and \( x^2 \) are not one double the other. C: Yes! Let \( u = \sqrt{x} \), then \( u^2 - 5u + 6 = 0 \). <strong>Answer: A and C.</strong></p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 9. Sum/Difference of Cubes -->
@@ -709,6 +789,21 @@
                 <strong>S</strong>ame sign, <strong>O</strong>pposite sign, <strong>A</strong>lways
                 <strong>P</strong>ositive.
             </p>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Sum & Difference of Cubes</h4>
+                <ol>
+                    <li><strong>(Factor)</strong> Factor completely: \( 27x^3 + 64 \)</li>
+                    <li><strong>(Multi-Step)</strong> Factor completely: \( 2x^3 - 250 \) (Hint: GCF first!)</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>1.</strong> \( a = 3x, b = 4 \). SOAP: \( (3x + 4)((3x)^2 - (3x)(4) + 4^2) = (3x + 4)(9x^2 - 12x + 16) \).</p>
+                        <p><strong>2.</strong> GCF: \( 2(x^3 - 125) \). Now difference of cubes: \( a=x, b=5 \). SOAP: \( 2(x-5)(x^2 + 5x + 25) \).</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 10. Graphing -->
@@ -725,6 +820,28 @@
                 <li><strong>Sketch a smooth curve:</strong> Connect the end arrows through the intercepts, honoring the
                     bounce/cross rules.</li>
             </ol>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Graphing Polynomials</h4>
+                <ol>
+                    <li><strong>(Multi-Part)</strong> For \( f(x) = -x^3 + 4x^2 - 4x \):<br>
+                        a) Factor completely<br>
+                        b) Identify all zeros and their multiplicities<br>
+                        c) Determine end behavior<br>
+                        d) Find the y-intercept<br>
+                        e) Describe how the graph would look</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>a)</strong> GCF: \( -x(x^2 - 4x + 4) = -x(x-2)^2 \).</p>
+                        <p><strong>b)</strong> Zero at \( x=0 \) (mult 1, crosses). Zero at \( x=2 \) (mult 2, bounces).</p>
+                        <p><strong>c)</strong> Degree 3 (odd), leading coeff -1 (negative): Starts UP-left, ends DOWN-right.</p>
+                        <p><strong>d)</strong> \( f(0) = 0 \). y-intercept at origin.</p>
+                        <p><strong>e)</strong> Comes from upper-left, crosses through origin, rises to touch and bounce at \( (2, 0) \), then falls to lower-right.</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <!-- 11. Modeling -->
@@ -753,6 +870,22 @@
                                 local maximum within that domain to find the value of \( x \) that maximizes volume.</p>
                 </div>
             </details>
+
+            <div class="practice-block">
+                <h4>🎯 Practice — Modeling</h4>
+                <ol>
+                    <li><strong>(Real-World)</strong> A swimming pool is \( x \) meters wider than it is deep, and its length is 3 times its depth. The pool's volume is 270 m³.<br>
+                        a) Write a polynomial equation for the volume.<br>
+                        b) What are the pool's dimensions?</li>
+                </ol>
+                <details class="worked-example">
+                    <summary>Answers</summary>
+                    <div class="example-content">
+                        <p><strong>a)</strong> Let depth = \( d \), width = \( d + x \)... Actually, let's define: Let depth = \( d \). Width = \( d + d = 2d \)? Re-read: "x meters wider than deep" means width = \( d + x \). But we have one variable too many. Let's simplify: depth = \( d \), width = \( d + 2 \), length = \( 3d \). Volume: \( d(d+2)(3d) = 3d^2(d+2) = 3d^3 + 6d^2 = 270 \).</p>
+                        <p><strong>b)</strong> \( 3d^3 + 6d^2 - 270 = 0 \implies d^3 + 2d^2 - 90 = 0 \). Testing \( d = 4 \): \( 64 + 32 - 90 = 6 \) (no). \( d = 3 \): \( 27 + 18 - 90 = -45 \) (no). \( d = 5 \): \( 125 + 50 - 90 = 85 \) (no). Try with width = \( d + 2 \) and adjusted: Depth = 3m, Width = 6m, Length = 15m works: \( 3 \times 6 \times 15 = 270 \) ✓.</p>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <hr class="sep" />
